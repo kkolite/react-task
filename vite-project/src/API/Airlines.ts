@@ -23,7 +23,7 @@ class FetchAirlines {
     return await this.main(EFetchParams.IATA, str);
   }
 
-  async start(str: string) {
+  async start() {
     return await this.main(EFetchParams.NAME, 'airlines');
   }
 }

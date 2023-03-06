@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import About from './About';
-import Cards from './Cards';
-import Error from './Error';
+import About from '../pages/About';
+import Cards from '../pages/Cards';
+import Error from '../pages/Error';
 
 const NavRoutes = () => {
   return (
