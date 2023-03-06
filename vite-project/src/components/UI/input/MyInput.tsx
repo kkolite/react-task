@@ -2,8 +2,8 @@ import classes from './MyInput.module.css'
 import { Component } from 'react';
 import Airlines from '../../../API/Airlines';
 
-class MyInput extends Component {
-  static isActive: NodeJS.Timeout | null
+/*class MyInput extends Component {
+  //static isActive: NodeJS.Timeout | null
 
   change(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -26,6 +26,18 @@ class MyInput extends Component {
       </div>
     );
   }
+}*/
+
+interface IProps {
+  setSearch: (str: string) => void
 }
+
+const MyInput = ({setSearch}: IProps) => {
+  return (
+    <div>
+        <input className={classes.myInput} type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
+    </div>
+  );
+};
 
 export default MyInput;
