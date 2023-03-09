@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  border: 2px solid navy;
+  padding: 10px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.card__name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  gap: 10px;
+}

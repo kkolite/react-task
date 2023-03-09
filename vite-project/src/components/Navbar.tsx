@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import MyLink from './MyLink';
 
 const Navbar = () => {
   return (
+    <>
     <div className='navbar'>
-      <Link to="/about">About</Link>
-      <Link to="/cards">Cards</Link>
+      <MyLink to="/about">About</MyLink>
+      <MyLink to="/cards">Cards</MyLink>
     </div>
+    <main>
+      <Outlet />
+    </main>
+    </>
   );
 };
 
