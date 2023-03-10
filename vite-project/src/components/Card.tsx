@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IAirline } from "../data/types";
 import MyButton from "./UI/button/MyButton"
 
@@ -6,7 +7,7 @@ interface IProps {
 }
 
 const Card = ({airline}: IProps) => {
-  const fleetArr = airline.fleet;
+  const fleet = airline.fleet;
   return (
     <div className="card">
       <p className="card__name">{airline.name}</p>
@@ -16,8 +17,10 @@ const Card = ({airline}: IProps) => {
       }
       <p>ICAO: {airline.icao}</p>
       <p>IATA: {airline.iata}</p>
-      <p>Fleet size: {Object.keys(fleetArr).length}</p>
-      <MyButton>About Fleet</MyButton>
+      <p>Fleet size: {fleet.total}</p>
+      <Link to={`/cards/${airline.icao}`}>
+        <MyButton>About Fleet</MyButton>
+      </Link>
     </div>
   );
 };

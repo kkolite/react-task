@@ -34,9 +34,7 @@ interface IProps {
 
 const MyInput = ({setSearch}: IProps) => {
   return (
-    <div>
-        <input className={classes.myInput} type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
-    </div>
+    <input className={classes.myInput} type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
   );
 };
 

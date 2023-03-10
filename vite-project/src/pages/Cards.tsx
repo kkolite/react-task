@@ -32,7 +32,7 @@ class Cards extends Component<{}, { list: IAirline[] }> {
 
   render() {
     return (
-      <div>
+      <div className="cards__page">
         <MyInput setSearch={this.change.bind(this)}/>
         <CardsList list={this.state ? this.state.list : []}/>
       </div>

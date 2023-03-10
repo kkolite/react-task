@@ -8,7 +8,7 @@ interface IProps {
 const MyLink = ({to, children}: IProps) => {
   const match = useMatch(to);
   return (
-    <Link to={to} style={{color: match ? 'red' : 'blue'}}>
+    <Link to={to} style={{color: match ? 'red' : 'white'}} className="mylink">
       {children}
     </Link>
   );

@@ -8,8 +8,8 @@ const Navbar = () => {
       <MyLink to="/about">About</MyLink>
       <MyLink to="/cards">Cards</MyLink>
     </div>
-    <main>
-      <Outlet />
+    <main className="container">
+      <Outlet/>
     </main>
     </>
   );
