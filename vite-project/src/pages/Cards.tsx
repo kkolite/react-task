@@ -25,15 +25,27 @@ class Cards extends Component<{}, { list: IAirline[] }> {
       Cards.isActive = null;
     };
     Cards.isActive = setTimeout(async () => {
-      const list = await Airlines.name(str);
+      const savedStr = str || 'airlines';
+      localStorage.setItem('value', savedStr);
+      const list = await Airlines.name(savedStr);
       this.setState({list}, () => console.log(this.state));
     }, 500);
   }
 
+  componentDidMount() {
+    console.log('Start!!!');
+    const str = localStorage.getItem('value');
+    if (str) this.change(str);
+  }
+
+
   render() {
     return (
       <div className="cards__page">
-        <MyInput setSearch={this.change.bind(this)}/>
+        <MyInput 
+          setSearch={this.change.bind(this)} 
+          value={localStorage.getItem('value') || ''}
+        />
         <CardsList list={this.state ? this.state.list : []}/>
       </div>
     );

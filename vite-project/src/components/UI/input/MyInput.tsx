@@ -29,12 +29,13 @@ import Airlines from '../../../API/Airlines';
 }*/
 
 interface IProps {
-  setSearch: (str: string) => void
+  setSearch: (str: string) => void,
+  value?: string
 }
 
-const MyInput = ({setSearch}: IProps) => {
+const MyInput = ({setSearch, value}: IProps) => {
   return (
-    <input className={classes.myInput} type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
+    <input className={classes.myInput} type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)} defaultValue={value}/>
   );
 };
 
