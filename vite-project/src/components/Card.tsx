@@ -18,7 +18,7 @@ const Card = ({airline}: IProps) => {
       <p>ICAO: {airline.icao}</p>
       <p>IATA: {airline.iata}</p>
       <p>Fleet size: {fleet.total}</p>
-      <Link to={`/cards/${airline.icao}`}>
+      <Link to={`/cards/${airline.icao.toLowerCase()}`}>
         <MyButton>About Fleet</MyButton>
       </Link>
     </div>
