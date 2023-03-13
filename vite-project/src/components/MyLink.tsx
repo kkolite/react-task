@@ -1,16 +1,15 @@
-import { Link, useMatch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface IProps {
   to: string,
-  children: any
+  children: string
 }
 
 const MyLink = ({to, children}: IProps) => {
-  const match = useMatch(to);
   return (
-    <Link to={to} style={{color: match ? 'red' : 'white'}} className="mylink">
+    <NavLink to={to} className="mylink">
       {children}
-    </Link>
+    </NavLink>
   );
 };
 

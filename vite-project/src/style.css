@@ -10,7 +10,11 @@
   justify-content: center;
   align-items: center;
   gap: 60px;
-  background-color: aqua;
+  border-bottom: 2px solid navy;
+}
+
+.active {
+  color: red;
 }
 
 .mylink {
