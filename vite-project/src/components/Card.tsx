@@ -10,14 +10,18 @@ const Card = ({airline}: IProps) => {
   const fleet = airline.fleet;
   return (
     <div className="card">
-      <p className="card__name">{airline.name}</p>
-      { airline.logo_url ? 
-      <img src={airline.logo_url} alt="logo"/> :
-      <></>
-      }
-      <p>ICAO: {airline.icao}</p>
-      <p>IATA: {airline.iata}</p>
-      <p>Fleet size: {fleet.total}</p>
+      <h3 className="card__name">{airline.name}</h3>
+      <div className="card__img-box">
+        { airline.logo_url ? 
+        <img src={airline.logo_url} alt="logo"/> :
+        <p>No logo</p>
+        }
+      </div>
+      <div className="card__info">
+        <p>ICAO: {airline.icao}</p>
+        <p>IATA: {airline.iata}</p>
+        <p>Fleet size: {fleet.total}</p>
+      </div>
       <Link to={`/cards/${airline.icao.toLowerCase()}`}>
         <MyButton>About Fleet</MyButton>
       </Link>

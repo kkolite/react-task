@@ -49,9 +49,24 @@
 }
 
 .card__name {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 19px;
+  font-weight: 600;
   text-align: center;
+}
+
+.card__img-box {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__info {
+  padding-top: 10px;
+  border-top: 1px dotted navy;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .card__list {
