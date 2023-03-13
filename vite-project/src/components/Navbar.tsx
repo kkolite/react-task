@@ -1,16 +1,16 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import MyLink from './MyLink';
 
 const Navbar = () => {
   return (
     <>
-    <div className='navbar'>
-      <MyLink to="/about">About</MyLink>
-      <MyLink to="/cards">Cards</MyLink>
-    </div>
-    <main className="container">
-      <Outlet/>
-    </main>
+      <div className="navbar">
+        <MyLink to="/about">About</MyLink>
+        <MyLink to="/cards">Cards</MyLink>
+      </div>
+      <main className="container">
+        <Outlet />
+      </main>
     </>
   );
 };

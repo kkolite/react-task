@@ -112,39 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,10 +130,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -186,9 +150,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,81 +158,66 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Navigate } from 'react-router-dom';
 import Airlines from '../API/Airlines';
-import Error from './Error';
-&nbsp;
-/*const CardPage = () =&gt; {
-  const {icao} = useParams();
-  if (!icao) return &lt;Navigate to="/error"/&gt;;
-&nbsp;
-  return (
-    &lt;div&gt;
-      {icao}
-    &lt;/div&gt;
-  );
-};*/
-&nbsp;
 import { Component } from 'react';
 import { IAirline } from '../data/types';
 import MyLoader from '../components/UI/loader/MyLoader';
 &nbsp;
-class CardPage extends Component &lt;{}, { airline: IAirline }&gt; {
+class CardPage extends Component&lt;unknown, { airline: IAirline }&gt; {
   componentDidMount() {
     this.getData();
   }
 &nbsp;
   async getData() {
     const icao = location.pathname.split('/')[2];
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (!icao) return &lt;Navigate to="/error"/&gt;;
-    
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!icao) return &lt;Navigate to="/error" /&gt;;
+&nbsp;
     const list = <span class="cstat-no" title="statement not covered" >await Airlines.icao(icao);</span>
 <span class="cstat-no" title="statement not covered" >    if (!list.length) {</span>
-<span class="cstat-no" title="statement not covered" >      return (</span>
-        &lt;div&gt;
-          Oops! We didn't find {icao.toUpperCase()}
-        &lt;/div&gt;
-      );
+<span class="cstat-no" title="statement not covered" >      return &lt;div&gt;Oops! We did not find {icao.toUpperCase()}&lt;/div&gt;;</span>
     }
 &nbsp;
     const airline = <span class="cstat-no" title="statement not covered" >list[0];</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({airline});</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ airline });</span>
   }
-  
+&nbsp;
   render() {
-    const {airline} = this.state || {airline: null};
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (!airline) return &lt;MyLoader/&gt;
+    const { airline } = this.state || { airline: null };
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!airline) return &lt;MyLoader /&gt;;
     const fleetArr = <span class="cstat-no" title="statement not covered" >Object.entries(airline.fleet);</span>
 <span class="cstat-no" title="statement not covered" >    fleetArr.pop();</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
         &lt;p className=""&gt;{airline.name}&lt;/p&gt;
-        { airline.logo_url ? 
-        &lt;img src={airline.logo_url} alt="logo"/&gt; :
-        &lt;&gt;&lt;/&gt;
-        }
+        {airline.logo_url ? &lt;img src={airline.logo_url} alt="logo" /&gt; : &lt;&gt;&lt;/&gt;}
         &lt;p&gt;ICAO: {airline.icao}&lt;/p&gt;
         &lt;p&gt;IATA: {airline.iata}&lt;/p&gt;
         &lt;p&gt;Fleet size: {airline.fleet.total}&lt;/p&gt;
         &lt;ul&gt;
-          {fleetArr.map(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; 
-<span class="cstat-no" title="statement not covered" >            &lt;li key={el[0]}&gt;{el[0]}: {el[1]}&lt;/li&gt;</span>
-          )}
+          {fleetArr.map(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; (
+<span class="cstat-no" title="statement not covered" >            &lt;li key={el[0]}&gt;</span>
+              {el[0]}: {el[1]}
+            &lt;/li&gt;
+          ))}
         &lt;/ul&gt;
       &lt;/div&gt;
     );
   }
 }
 &nbsp;
-export default CardPage;</pre></td></tr></table></pre>
+export default CardPage;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-13T14:57:37.625Z
+                at 2023-03-13T15:24:24.789Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

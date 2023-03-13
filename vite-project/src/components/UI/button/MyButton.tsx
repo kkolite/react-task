@@ -1,11 +1,11 @@
 import React from 'react';
-import classes from './MyButton.module.css'
+import classes from './MyButton.module.css';
 
 interface IProps {
-  children: any;
+  children: string;
 }
 
-const MyButton = ({children, ...props} : IProps) => {
+const MyButton = ({ children, ...props }: IProps) => {
   return (
     <button {...props} className={classes.myBtn}>
       {children}
