@@ -63,10 +63,10 @@ describe('Card page', () => {
 
 describe('Not Found message', () => {
   it('Render message', () => {
-    render(<NotFound/>);
+    render(<NotFound />);
     expect(screen.getByText(/we did not find/i)).toBeInTheDocument();
-  })
-})
+  });
+});
 
 describe('Card', () => {
   it('render card', () => {
