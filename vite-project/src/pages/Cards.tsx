@@ -4,7 +4,7 @@ import { Component } from 'react';
 import Airlines from '../API/Airlines';
 import { IAirline } from '../data/types';
 
-class Cards extends Component<unknown, { list: IAirline[] }> {
+class Cards extends Component<unknown, { list: IAirline[] | null }> {
   static isActive: NodeJS.Timeout | null;
 
   change(str: string) {
@@ -16,7 +16,7 @@ class Cards extends Component<unknown, { list: IAirline[] }> {
       const savedStr = str || 'airlines';
       localStorage.setItem('value', savedStr);
 
-      this.setState({ list: [] });
+      this.setState({ list: null });
 
       const list = await Airlines.name(savedStr);
       this.setState({ list }, () => console.log(this.state));
@@ -32,7 +32,7 @@ class Cards extends Component<unknown, { list: IAirline[] }> {
     return (
       <div className="cards__page">
         <MyInput setSearch={this.change.bind(this)} value={localStorage.getItem('value') || ''} />
-        <CardsList list={this.state ? this.state.list : []} />
+        <CardsList list={this.state ? this.state.list : null} />
       </div>
     );
   }
