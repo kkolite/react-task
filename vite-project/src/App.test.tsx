@@ -8,6 +8,7 @@ import Card from './components/Card';
 import MyInput from './components/UI/input/MyInput';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFound from './components/NotFound';
 
 const mockValue = {
   iata: '',
@@ -59,6 +60,13 @@ describe('Card page', () => {
     expect(screen.getByText(/wait/i)).toBeInTheDocument();
   });
 });
+
+describe('Not Found message', () => {
+  it('Render message', () => {
+    render(<NotFound/>);
+    expect(screen.getByText(/we did not find/i)).toBeInTheDocument();
+  })
+})
 
 describe('Card', () => {
   it('render card', () => {
