@@ -16,6 +16,7 @@ import Error from './Error';
 
 import { Component } from 'react';
 import { IAirline } from '../data/types';
+import MyLoader from '../components/UI/loader/MyLoader';
 
 class CardPage extends Component <{}, { airline: IAirline }> {
   componentDidMount() {
@@ -41,7 +42,7 @@ class CardPage extends Component <{}, { airline: IAirline }> {
   
   render() {
     const {airline} = this.state || {airline: null};
-    if (!airline) return <p>Wait...</p>
+    if (!airline) return <MyLoader/>
     const fleetArr = Object.entries(airline.fleet);
     fleetArr.pop();
     return (

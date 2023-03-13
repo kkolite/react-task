@@ -76,9 +76,10 @@
 .card__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  gap: 10px;
+  max-width: 1000px;
+  gap: 20px;
 }
 
 .cards__page {
