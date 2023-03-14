@@ -1,10 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import MyLink from './MyLink';
 
-const Navbar = () => {
+interface IProps {
+  page: string;
+}
+
+const Navbar = ({ page }: IProps) => {
   return (
     <>
       <div className="navbar">
+        <p>Current page: {page}</p>
         <MyLink to="/about">About</MyLink>
         <MyLink to="/cards">Cards</MyLink>
       </div>

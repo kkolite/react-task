@@ -20,7 +20,9 @@ const Card = ({ airline }: IProps) => {
         <p>Fleet size: {fleet.total}</p>
       </div>
       <Link to={`/cards/${airline.icao.toLowerCase()}`}>
-        <MyButton disabled={true} title="Link disabled :(">About Fleet</MyButton>
+        <MyButton disabled={true} title="Link disabled :(">
+          About Fleet
+        </MyButton>
       </Link>
     </div>
   );

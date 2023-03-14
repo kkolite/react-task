@@ -4,11 +4,16 @@ import { Component } from 'react';
 import Airlines from '../API/Airlines';
 import { IAirline } from '../data/types';
 
-class Cards extends Component<unknown, { list: IAirline[] | null; str: string }> {
+interface IProps {
+  currentPage: () => void;
+}
+
+class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> {
   static isActive: NodeJS.Timeout | null;
 
-  constructor(props: unknown) {
+  constructor(props: IProps) {
     super(props);
+    props.currentPage();
     this.state = { list: null, str: localStorage.getItem('value') || '' };
   }
 
