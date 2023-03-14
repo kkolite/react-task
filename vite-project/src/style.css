@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .navbar {
@@ -34,6 +36,7 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  margin-top: 20px;
 }
 
 .about__page div {
@@ -46,9 +49,9 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  border: 2px solid navy;
+  border: 1px solid navy;
   padding: 10px;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   width: 200px;
 }
 

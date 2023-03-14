@@ -3,6 +3,8 @@ import classes from './MyButton.module.css';
 
 interface IProps {
   children: string;
+  disabled?: boolean;
+  title?: string;
 }
 
 const MyButton = ({ children, ...props }: IProps) => {
