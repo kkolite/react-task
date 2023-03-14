@@ -18,14 +18,6 @@ class FetchAirlines {
   async icao(str: string) {
     return await this.main(EFetchParams.ICAO, str);
   }
-
-  async iata(str: string) {
-    return await this.main(EFetchParams.IATA, str);
-  }
-
-  async start() {
-    return await this.main(EFetchParams.NAME, 'airlines');
-  }
 }
 
 export default new FetchAirlines();

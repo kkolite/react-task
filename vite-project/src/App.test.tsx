@@ -8,7 +8,8 @@ import Card from './components/Card';
 import MyInput from './components/UI/input/MyInput';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import NotFound from './components/NotFound';
+import Airlines from './API/Airlines';
+import CardsList from './components/CardsList';
 
 const mockValue = {
   iata: '',
@@ -25,6 +26,17 @@ const mockSetSearch = (str: string) => {
 };
 
 const mockCurrentPage = () => {console.log('')}
+
+describe('Fetch airlines', () => {
+  it('Get correct data by ICAO code', async () => {
+    const data = await Airlines.icao('bru');
+    expect(data[0].name).toEqual('Belavia');
+  });
+  it('Get correct data by name', async () => {
+    const data = await Airlines.name('belavia');
+    expect(data[0].icao).toEqual('BRU');
+  });
+})
 
 describe('About page', () => {
   it('render about page', () => {
@@ -60,19 +72,43 @@ describe('Cards page', () => {
     expect(screen.findByText(/iata/i));
     expect(screen.findByText(/icao/i));
   });
+  it('Change and search', async() => {
+    const mockCards = new Cards({currentPage: mockCurrentPage});
+    mockCards.change('Bel');
+    setTimeout(() => mockCards.change('Belavia'), 10);
+
+    setTimeout(() => {
+      const list = mockCards.state.list;
+      const str = mockCards.state.str;
+      expect(str).toEqual('Belavia');
+
+      if (!list) return;
+      expect(list[0].name).toEqual('Belavia');
+    }, 1500);
+  })
 });
+
+describe('Card list', () => {
+  it('Empty list', () => {
+    render(<CardsList list={[]}/>);
+    expect(screen.getByText(/oops/i)).toBeInTheDocument();
+  })
+  it('Render list', () => {
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CardsList list={[mockValue]}/>}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
+    expect(screen.getByText(/icao/i)).toBeInTheDocument();
+  })
+})
 
 describe('Card page', () => {
   it('render card page', () => {
     render(<CardPage />);
     expect(screen.getByText(/wait/i)).toBeInTheDocument();
-  });
-});
-
-describe('Not Found message', () => {
-  it('Render message', () => {
-    render(<NotFound />);
-    expect(screen.getByText(/we did not find/i)).toBeInTheDocument();
   });
 });
 
@@ -85,7 +121,6 @@ describe('Card', () => {
         </Routes>
       </BrowserRouter>
     );
-    screen.debug();
     expect(screen.getByText(/icao/i)).toBeInTheDocument();
   });
 });

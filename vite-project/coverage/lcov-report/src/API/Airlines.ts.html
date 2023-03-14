@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,41 +86,25 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,30 +112,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { EFetchParams, IAirline } from '../data/types';
 &nbsp;
 class FetchAirlines {
-<span class="fstat-no" title="function not covered" >  pr</span>ivate async main(param: EFetchParams, name: string) {
-    const res = <span class="cstat-no" title="statement not covered" >await fetch(`https://api.api-ninjas.com/v1/airlines?${param}=${name}`, {</span>
+  private async main(param: EFetchParams, name: string) {
+    const res = await fetch(`https://api.api-ninjas.com/v1/airlines?${param}=${name}`, {
       headers: {
         'X-Api-Key': 'w/DFGJ+sVb1SJ5tXWPlwNQ==D3zKc1k0KkSNzLvV',
       },
     });
-    const result: IAirline[] = <span class="cstat-no" title="statement not covered" >await res.json();</span>
-<span class="cstat-no" title="statement not covered" >    return result;</span>
+    const result: IAirline[] = await res.json();
+    return result;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync name(str: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.main(EFetchParams.NAME, str);</span>
+  async name(str: string) {
+    return await this.main(EFetchParams.NAME, str);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync icao(str: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.main(EFetchParams.ICAO, str);</span>
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync iata(str: string) {
-<span class="cstat-no" title="statement not covered" >    return await this.main(EFetchParams.IATA, str);</span>
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync start() {
-<span class="cstat-no" title="statement not covered" >    return await this.main(EFetchParams.NAME, 'airlines');</span>
+  async icao(str: string) {
+    return await this.main(EFetchParams.ICAO, str);
   }
 }
 &nbsp;
@@ -163,7 +139,7 @@ export default new FetchAirlines();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-14T10:14:40.079Z
+                at 2023-03-14T14:07:27.677Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
