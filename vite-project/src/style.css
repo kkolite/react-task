@@ -87,3 +87,27 @@
   flex-direction: column;
   align-items: center;
 }
+
+.error__page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(white, lightcyan);
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.error__text {
+  font-size: 28px;
+}
+
+.error_h {
+  font-size: 35px;
+}

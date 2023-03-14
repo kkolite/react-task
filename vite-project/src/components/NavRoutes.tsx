@@ -9,14 +9,12 @@ const NavRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Navbar />}>
-        {/*<Route path="/posts" element={<Posts/>}/>
-        <Route path="/posts/:id" element={<PostPage/>}/>*/}
+        <Route index element={<Navigate to="/about" replace />} />
         <Route path="about" element={<About />} />
         <Route path="cards" element={<Cards />} />
         <Route path="cards/:icao" element={<CardPage />} />
-        <Route index element={<Navigate to="/about" replace />} />
-        <Route path="/*" element={<Error />} />
       </Route>
+      <Route path="/*" element={<Error />} />
     </Routes>
   );
 };
