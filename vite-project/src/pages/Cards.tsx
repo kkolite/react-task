@@ -14,7 +14,16 @@ class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> 
   constructor(props: IProps) {
     super(props);
     props.currentPage();
-    this.state = { list: null, str: localStorage.getItem('value') || '' };
+    this.state = { 
+      list: null,
+      str: localStorage.getItem('value') || '' 
+    };
+
+    addEventListener('beforeunload', () => {
+      this.saveToLocalStorage();
+    })
+    
+    this.change(this.state.str);
   }
 
   change(str: string) {
@@ -40,10 +49,6 @@ class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> 
   }
 
   componentWillUnmount() {
-    this.saveToLocalStorage();
-  }
-
-  componentDidUpdate() {
     this.saveToLocalStorage();
   }
 
