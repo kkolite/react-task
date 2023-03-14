@@ -24,29 +24,37 @@ const mockSetSearch = (str: string) => {
   console.log(str);
 };
 
+const mockCurrentPage = () => {console.log('')}
+
 describe('About page', () => {
   it('render about page', () => {
-    render(<About />);
+    render(<About currentPage={mockCurrentPage}/>);
     expect(screen.getAllByText(/About/));
   });
 });
 
 describe('Error page', () => {
   it('render error page', () => {
-    render(<Error />);
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Error />}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
     expect(screen.getByText(/page not found/i)).toBeInTheDocument();
   });
 });
 
 describe('Cards page', () => {
   it('render input with placeholder', () => {
-    render(<Cards />);
+    render(<Cards currentPage={mockCurrentPage}/>);
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByRole('textbox')).not.toBeRequired();
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
   });
   it('render airline card', () => {
-    render(<Cards />);
+    render(<Cards currentPage={mockCurrentPage}/>);
     expect(screen.findByAltText('logo'));
     expect(screen.findByText('Fleet size'));
     expect(screen.findByText(/iata/i));
