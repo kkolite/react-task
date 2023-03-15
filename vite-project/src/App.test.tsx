@@ -11,6 +11,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Airlines from './API/Airlines';
 import CardsList from './components/CardsList';
 
+interface IStore {
+  [index: string]: string
+}
+
 const mockValue = {
   iata: '',
   icao: '',
@@ -65,6 +69,7 @@ describe('Cards page', () => {
     expect(screen.getByRole('textbox')).not.toBeRequired();
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
   });
+
   it('render airline card', () => {
     render(<Cards currentPage={mockCurrentPage}/>);
     expect(screen.findByAltText('logo'));
@@ -72,6 +77,7 @@ describe('Cards page', () => {
     expect(screen.findByText(/iata/i));
     expect(screen.findByText(/icao/i));
   });
+
   it('Change and search', async() => {
     const mockCards = new Cards({currentPage: mockCurrentPage});
     mockCards.change('Bel');
@@ -85,6 +91,13 @@ describe('Cards page', () => {
       if (!list) return;
       expect(list[0].name).toEqual('Belavia');
     }, 1500);
+  })
+
+  it('Save to local storage', () => {
+    const page = render(<Cards currentPage={mockCurrentPage}/>);
+    localStorage.setItem('value', 'abracadabra');
+    page.unmount();
+    expect(localStorage.getItem('value')).toEqual('');
   })
 });
 
