@@ -23,7 +23,7 @@ class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> 
       this.saveToLocalStorage();
     })
     
-    this.change(this.state.str);
+    //this.change(this.state.str);
   }
 
   change(str: string) {
