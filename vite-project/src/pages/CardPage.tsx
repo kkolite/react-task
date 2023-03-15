@@ -1,10 +1,10 @@
 import { Navigate } from 'react-router-dom';
 import Airlines from '../API/Airlines';
 import { Component } from 'react';
-import { IAirline } from '../data/types';
+import { IAirline, INullProps } from '../data/types';
 import MyLoader from '../components/UI/loader/MyLoader';
 
-class CardPage extends Component<unknown, { airline: IAirline }> {
+class CardPage extends Component<INullProps, { airline: IAirline }> {
   componentDidMount() {
     this.getData();
   }

@@ -5,6 +5,10 @@ export interface IInputProps {
   onChange?: () => void;
 }
 
+export interface INullProps {
+  [key: string]: never
+}
+
 export enum EFetchParams {
   NAME = 'name',
   ICAO = 'icao',

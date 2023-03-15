@@ -5,9 +5,10 @@ import Cards from '../pages/Cards';
 import Error from '../pages/Error';
 import Navbar from './Navbar';
 import { Component } from 'react';
+import { INullProps } from '../data/types';
 
-class NavRoutes extends Component<unknown, { page: string }> {
-  constructor(props: unknown) {
+class NavRoutes extends Component<INullProps, { page: string }> {
+  constructor(props: INullProps) {
     super(props);
     this.state = { page: '' };
   }
