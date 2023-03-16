@@ -13,15 +13,14 @@ class Form extends Component<IProps> {
 
   createPost(str: string, date: string) {
     console.log(str, date);
-    
   }
 
   render() {
     return (
       <div>
-        <UserForm create={this.createPost.bind(this)}/>
+        <UserForm create={this.createPost.bind(this)} />
         <UserList />
-      </div>    
+      </div>
     );
   }
 }
