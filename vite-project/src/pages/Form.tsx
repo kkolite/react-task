@@ -7,10 +7,19 @@ interface IProps {
 }
 
 class Form extends Component<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
+  createPost(str: string, date: string) {
+    console.log(str, date);
+    
+  }
+
   render() {
     return (
       <div>
-        <UserForm />
+        <UserForm create={this.createPost.bind(this)}/>
         <UserList />
       </div>    
     );
