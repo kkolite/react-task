@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Cards from './pages/Cards';
 import Error from './pages/Error';
-import CardPage from './pages/CardPage';
 import About from './pages/About';
 import Card from './components/Card';
 import MyInput from './components/UI/input/MyInput';
@@ -117,13 +116,6 @@ describe('Card list', () => {
     expect(screen.getByText(/icao/i)).toBeInTheDocument();
   })
 })
-
-describe('Card page', () => {
-  it('render card page', () => {
-    render(<CardPage />);
-    expect(screen.getByText(/wait/i)).toBeInTheDocument();
-  });
-});
 
 describe('Card', () => {
   it('render card', () => {

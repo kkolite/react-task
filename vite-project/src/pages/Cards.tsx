@@ -22,8 +22,6 @@ class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> 
     addEventListener('beforeunload', () => {
       this.saveToLocalStorage();
     })
-    
-    //this.change(this.state.str);
   }
 
   change(str: string) {
