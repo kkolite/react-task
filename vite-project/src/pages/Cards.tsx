@@ -42,7 +42,7 @@ class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> 
   }
 
   componentDidMount() {
-    const str = localStorage.getItem('value');
+    const str = localStorage.getItem('value') || 'airlines';
     if (str) this.change(str);
   }
 
