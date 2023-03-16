@@ -6,6 +6,7 @@ import { INullProps } from './data/types';
 import About from './pages/About';
 import Cards from './pages/Cards';
 import Error from './pages/Error';
+import Form from './pages/Form';
 
 class App extends Component<INullProps, { page: string }> {
   constructor(props: INullProps) {
@@ -36,6 +37,10 @@ class App extends Component<INullProps, { page: string }> {
           {
             path: EPages.CARDS,
             element: <Cards currentPage={this.currentPage.bind(this)} />,
+          },
+          {
+            path: EPages.FORM,
+            element: <Form currentPage={this.currentPage.bind(this)} />,
           },
         ],
       },

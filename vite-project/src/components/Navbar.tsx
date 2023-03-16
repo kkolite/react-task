@@ -12,6 +12,7 @@ const Navbar = ({ page }: IProps) => {
         <p>Current page: {page}</p>
         <MyLink to="/about">About</MyLink>
         <MyLink to="/cards">Cards</MyLink>
+        <MyLink to="/form">Form</MyLink>
       </div>
       <main className="container">
         <Outlet />
