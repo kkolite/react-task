@@ -6,7 +6,7 @@ export interface IInputProps {
 }
 
 export interface INullProps {
-  [key: string]: never
+  [key: string]: never;
 }
 
 export enum EFetchParams {

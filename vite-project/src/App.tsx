@@ -36,17 +36,15 @@ class App extends Component<INullProps, { page: string }> {
           {
             path: EPages.CARDS,
             element: <Cards currentPage={this.currentPage.bind(this)} />,
-          }
-        ]
+          },
+        ],
       },
       {
         path: '/*',
-        element: <Error />
-      }
-    ])
-    return (
-      <RouterProvider router={router} />
-    );
+        element: <Error />,
+      },
+    ]);
+    return <RouterProvider router={router} />;
   }
 }
 
