@@ -3,14 +3,16 @@ interface IValidate {
   el: HTMLInputElement;
 }
 
-export default function (arr: IValidate[]) {
+export default function (arr: IValidate[], button?: HTMLButtonElement) {
   const boolArr = arr.map(({ regex, el }) => {
     el.style.borderColor = '';
     if (el.value.match(regex)) {
       return true;
     }
-    el.style.borderColor = 'red';
+    el.style.borderColor = 'red'
     return false;
   });
-  return boolArr.every((el) => el);
+  const result = boolArr.every((el) => el);
+  if (button) button.disabled = !result;
+  return result;
 }

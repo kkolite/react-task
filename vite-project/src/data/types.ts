@@ -5,6 +5,19 @@ export interface IInputProps {
   onChange?: () => void;
 }
 
+export interface IInput {
+  el: HTMLInputElement,
+  regex: RegExp,
+}
+
+export interface IInputObj {
+  [key: string]: IInput
+}
+
+export interface IPost {
+  [key: string]: string
+}
+
 export interface INullProps {
   [key: string]: never;
 }
