@@ -7,25 +7,28 @@ interface IProps {
 }
 
 class UserForm extends Component<IProps> {
-  inputName: React.RefObject<HTMLInputElement>;
-  inputDate: React.RefObject<HTMLInputElement>;
-  submitButton: React.RefObject<HTMLButtonElement>;
-  submitStatus: React.RefObject<HTMLLabelElement>;
+  inputName: React.RefObject<HTMLInputElement> = React.createRef();
+  inputDate: React.RefObject<HTMLInputElement> = React.createRef();
+  inputCheck: React.RefObject<HTMLInputElement> = React.createRef();
+  inputSelect: React.RefObject<HTMLSelectElement> = React.createRef();
+  submitButton: React.RefObject<HTMLButtonElement> = React.createRef();
+  submitStatus: React.RefObject<HTMLLabelElement> = React.createRef();
+  inputRadio: React.RefObject<HTMLInputElement> = React.createRef();
+  inputFile: React.RefObject<HTMLInputElement> = React.createRef();
+  imgFile: React.RefObject<HTMLImageElement> = React.createRef();
   setPost: (obj: IPost) => void;
 
   constructor(props: IProps) {
     super(props);
     this.setPost = props.setPost;
-    this.inputName = React.createRef();
-    this.inputDate = React.createRef();
-    this.submitStatus = React.createRef();
-    this.submitButton = React.createRef();
   }
 
   handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+    e.preventDefault();    
     const submitStatus = this.submitStatus.current;
     const submitButton = this.submitButton.current;
+    if (!submitStatus || !submitButton) return;
+
     const elObj = {
       name: {
         el: this.inputName.current,
@@ -33,20 +36,53 @@ class UserForm extends Component<IProps> {
       },
       date: {
         el: this.inputDate.current,
-        regex: /^[a-z0-9_-]{3,15}$/,
+        regex: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/,
+      },
+      img: {
+        el: this.inputFile.current,
+        regex: /[\S\s]+[\S]+/,
       }
     } as IInputObj;
 
-    if (!submitStatus || !submitButton) return;
+    const addObj = {
+      checkbox: this.inputCheck.current?.checked.toString(),
+      region: this.inputSelect.current?.value,
+      radio: this.inputRadio.current?.checked.toString()
+    } as IPost;
     
     const elArr = Object.values(elObj);
     if (!Validate(elArr)) {
       this.afterInvalid(submitButton, elArr);
       return;
     }
+    
+    const inputfile = this.inputFile.current;
+    if (!inputfile?.files) return;
 
-    this.createPost(elObj);
+    this.createPost(elObj, addObj, inputfile.files);
     this.afterValid(submitButton, submitStatus, elArr);
+  }
+
+  handleImg() {
+    const preview = this.imgFile.current;
+    const input = this.inputFile.current;
+
+    if (!input || !preview) return;
+    if (!input.files) return;
+
+    const reader = new FileReader();
+    const file = input.files[0];
+
+    reader.onloadend = function () {
+      preview.src = reader.result as string;
+    }
+
+    if (!file) {
+      preview.src = ''
+      return;
+    }
+
+    reader.readAsDataURL(file);
   }
 
   afterValid(button: HTMLButtonElement, status: HTMLLabelElement, arr: IInput[]) {
@@ -66,12 +102,20 @@ class UserForm extends Component<IProps> {
     })
   }
 
-  createPost(obj: IInputObj) {
-    const post: IPost = {}
+  createPost(obj: IInputObj, addObj: IPost, files: FileList) {
+    const post: IPost = {...addObj}
     for (let key in obj) {
+      if (obj[key].el.type === 'file') continue;
       post[key] = obj[key].el.value
     }
-    this.setPost(post);
+
+    const reader = new FileReader();       
+    const file = files[0];
+    reader.onloadend = () => {
+      post.file = reader.result as string;
+      this.setPost(post);
+    }
+    reader.readAsDataURL(file);
   }
 
   removeDisable() {
@@ -81,7 +125,7 @@ class UserForm extends Component<IProps> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit.bind(this)} className="form">
         <label>
           Name, 3-15 symbols:
           <input
@@ -89,7 +133,6 @@ class UserForm extends Component<IProps> {
             name=""
             id="name"
             ref={this.inputName}
-            onFocus={(e) => (e.target.style.borderColor = '')}
             onChange={this.removeDisable.bind(this)}
           />
         </label>
@@ -100,10 +143,48 @@ class UserForm extends Component<IProps> {
             name=""
             id="date"
             ref={this.inputDate}
-            onFocus={(e) => (e.target.style.borderColor = '')}
             onChange={this.removeDisable.bind(this)}
           />
         </label>
+        <label>
+          Check
+          <input
+            type="checkbox"
+            name=""
+            id="check"
+            ref={this.inputCheck}
+            value="qqq"
+            onChange={this.removeDisable.bind(this)}
+          />
+        </label>
+        <label>
+          Choose smth
+          <select name="" id="" ref={this.inputSelect}>
+            <option value="by">BY</option>
+            <option value="ru">RU</option>
+            <option value="ua">UA</option>
+          </select>
+        </label>
+        <fieldset id="group">
+          <label>
+            Yes
+            <input type="radio" name="group" id="" value={'1'} ref={this.inputRadio}/>
+          </label>
+          <label>
+            No
+            <input type="radio" name="group" id="" value={'2'} defaultChecked/>
+          </label>
+        </fieldset>
+        <label>
+          Photo
+          <input 
+            type="file" 
+            accept="image/*" 
+            ref={this.inputFile} 
+            onChange={this.handleImg.bind(this)} 
+          />
+        </label>
+        <img src="" alt="" ref={this.imgFile} height="200"/>
         <button 
           ref={this.submitButton}
           disabled={true}
