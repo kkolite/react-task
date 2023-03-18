@@ -7,20 +7,24 @@ interface IProps {
   currentPage: () => void;
 }
 
-class Form extends Component<IProps> {
+class Form extends Component<IProps, {postList: IPost[]}> {
+  state: {postList: IPost[]} = {postList: []};
   constructor(props: IProps) {
     super(props);
   }
 
   setPost(post: IPost) {
     console.log(Object.entries(post));
+    const { postList } = this.state;
+    postList.push(post);
+    this.setState({postList});
   }
 
   render() {
     return (
       <div>
         <UserForm setPost={this.setPost.bind(this)} />
-        <UserList />
+        <UserList postList={this.state.postList} />
       </div>
     );
   }

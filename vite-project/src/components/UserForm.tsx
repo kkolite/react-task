@@ -131,6 +131,7 @@ class UserForm extends Component<IProps> {
           <input
             type="text"
             name=""
+            className='form__control'
             id="name"
             ref={this.inputName}
             onChange={this.removeDisable.bind(this)}
@@ -141,16 +142,18 @@ class UserForm extends Component<IProps> {
           <input
             type="date"
             name=""
+            className='form__control'
             id="date"
             ref={this.inputDate}
             onChange={this.removeDisable.bind(this)}
           />
         </label>
         <label>
-          Check
+          Have you got pets?
           <input
             type="checkbox"
             name=""
+            className='form__control'
             id="check"
             ref={this.inputCheck}
             value="qqq"
@@ -158,33 +161,35 @@ class UserForm extends Component<IProps> {
           />
         </label>
         <label>
-          Choose smth
-          <select name="" id="" ref={this.inputSelect}>
+          Choose your region
+          <select name="" id="" ref={this.inputSelect} className='form__control'>
             <option value="by">BY</option>
             <option value="ru">RU</option>
             <option value="ua">UA</option>
           </select>
         </label>
-        <fieldset id="group">
+        <fieldset id="group" className='form__radio-container'>
+          Relocation?
           <label>
             Yes
-            <input type="radio" name="group" id="" value={'1'} ref={this.inputRadio}/>
+            <input className='form__control' type="radio" name="group" id="" value={'1'} ref={this.inputRadio}/>
           </label>
           <label>
             No
-            <input type="radio" name="group" id="" value={'2'} defaultChecked/>
+            <input className='form__control' type="radio" name="group" id="" value={'2'} defaultChecked/>
           </label>
         </fieldset>
         <label>
-          Photo
+          Photo 
           <input 
             type="file" 
             accept="image/*" 
             ref={this.inputFile} 
+            className='form__control'
             onChange={this.handleImg.bind(this)} 
           />
         </label>
-        <img src="" alt="" ref={this.imgFile} height="200"/>
+        <img src="" alt="" ref={this.imgFile} className="user-post__img"/>
         <button 
           ref={this.submitButton}
           disabled={true}
