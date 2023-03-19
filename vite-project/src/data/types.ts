@@ -6,16 +6,16 @@ export interface IInputProps {
 }
 
 export interface IInput {
-  el: HTMLInputElement,
-  regex?: RegExp,
+  el: HTMLInputElement;
+  regex?: RegExp;
 }
 
 export interface IInputObj {
-  [key: string]: IInput
+  [key: string]: IInput;
 }
 
 export interface IPost {
-  [key: string]: string
+  [key: string]: string;
 }
 
 export interface INullProps {

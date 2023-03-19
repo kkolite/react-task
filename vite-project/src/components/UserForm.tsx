@@ -24,7 +24,7 @@ class UserForm extends Component<IProps> {
   }
 
   handleSubmit(e: React.FormEvent) {
-    e.preventDefault();    
+    e.preventDefault();
     const submitStatus = this.submitStatus.current;
     const submitButton = this.submitButton.current;
     if (!submitStatus || !submitButton) return;
@@ -43,22 +43,22 @@ class UserForm extends Component<IProps> {
         regex: /[\S\s]+[\S]+/,
       },
       check: {
-        el: this.inputCheck.current
-      }
+        el: this.inputCheck.current,
+      },
     } as IInputObj;
 
     const addData = {
       region: this.inputSelect.current?.value,
-      radio: this.inputRadio.current?.checked.toString()
+      radio: this.inputRadio.current?.checked.toString(),
     } as IPost;
-    
+
     const arrData = Object.values(data);
-  
+
     if (!Validate(arrData)) {
       this.afterInvalid(arrData);
       return;
     }
-    
+
     const inputfile = this.inputFile.current;
     if (!inputfile?.files) return;
 
@@ -78,10 +78,10 @@ class UserForm extends Component<IProps> {
 
     reader.onloadend = function () {
       preview.src = reader.result as string;
-    }
+    };
 
     if (!file) {
-      preview.src = ''
+      preview.src = '';
       return;
     }
 
@@ -99,7 +99,7 @@ class UserForm extends Component<IProps> {
       input.el.value = '';
       input.el.onchange = null;
     });
-    
+
     status.textContent = 'Success!';
     setTimeout(() => (status.textContent = ''), 3000);
   }
@@ -107,22 +107,22 @@ class UserForm extends Component<IProps> {
   afterInvalid(arr: IInput[]) {
     arr.forEach((input) => {
       input.el.onchange = () => Validate(arr);
-    })
+    });
   }
 
   createPost(obj: IInputObj, addObj: IPost, files: FileList) {
-    const post: IPost = {...addObj}
-    for (let key in obj) {
+    const post: IPost = { ...addObj };
+    for (const key in obj) {
       if (obj[key].el.type === 'file') continue;
-      post[key] = obj[key].el.value
+      post[key] = obj[key].el.value;
     }
 
-    const reader = new FileReader();       
+    const reader = new FileReader();
     const file = files[0];
     reader.onloadend = () => {
       post.file = reader.result as string;
       this.setPost(post);
-    }
+    };
     reader.readAsDataURL(file);
   }
 
@@ -131,69 +131,70 @@ class UserForm extends Component<IProps> {
       <form onSubmit={this.handleSubmit.bind(this)} className="form">
         <label>
           Name, 3-15 symbols:
-          <input
-            type="text"
-            name=""
-            className='form__control'
-            id="name"
-            ref={this.inputName}
-          />
+          <input type="text" name="" className="form__control" id="name" ref={this.inputName} />
         </label>
         <label>
           Date of Birth
-          <input
-            type="date"
-            name=""
-            className='form__control'
-            id="date"
-            ref={this.inputDate}
-          />
+          <input type="date" name="" className="form__control" id="date" ref={this.inputDate} />
         </label>
         <label>
           Choose your region
-          <select name="" id="" ref={this.inputSelect} className='form__control'>
+          <select name="" id="" ref={this.inputSelect} className="form__control">
             <option value="by">BY</option>
             <option value="ru">RU</option>
             <option value="ua">UA</option>
           </select>
         </label>
-        <fieldset id="group" className='form__radio-container'>
+        <fieldset id="group" className="form__radio-container">
           Relocation?
           <label>
             Yes
-            <input className='form__control' type="radio" name="group" id="" value={'1'} ref={this.inputRadio}/>
+            <input
+              className="form__control"
+              type="radio"
+              name="group"
+              id=""
+              value={'1'}
+              ref={this.inputRadio}
+            />
           </label>
           <label>
             No
-            <input className='form__control' type="radio" name="group" id="" value={'2'} defaultChecked/>
+            <input
+              className="form__control"
+              type="radio"
+              name="group"
+              id=""
+              value={'2'}
+              defaultChecked
+            />
           </label>
         </fieldset>
         <label>
-          Photo 
-          <input 
-            type="file" 
-            accept="image/*" 
-            ref={this.inputFile} 
-            className='form__control'
-            onChange={this.handleImg.bind(this)} 
+          Photo
+          <input
+            type="file"
+            accept="image/*"
+            ref={this.inputFile}
+            className="form__control"
+            onChange={this.handleImg.bind(this)}
           />
         </label>
-        <img src="" alt="" ref={this.imgFile} className="user-post__img"/>
+        <img src="" alt="" ref={this.imgFile} className="user-post__img" />
         <label>
           I consent to my personal data
           <input
             type="checkbox"
             name=""
-            className='form__control'
+            className="form__control"
             id="check"
             ref={this.inputCheck}
             value="qqq"
           />
         </label>
-        <button 
-          ref={this.submitButton}
-          className="form__submit"
-        >Submit</button >
+        <button ref={this.submitButton} className="form__submit">
+          Submit
+        </button>
         <label ref={this.submitStatus} />
       </form>
     );

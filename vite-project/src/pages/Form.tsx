@@ -7,8 +7,8 @@ interface IProps {
   currentPage: () => void;
 }
 
-class Form extends Component<IProps, {postList: IPost[]}> {
-  state: {postList: IPost[]} = {postList: []};
+class Form extends Component<IProps, { postList: IPost[] }> {
+  state: { postList: IPost[] } = { postList: [] };
   constructor(props: IProps) {
     super(props);
   }
@@ -17,7 +17,7 @@ class Form extends Component<IProps, {postList: IPost[]}> {
     console.log(Object.entries(post));
     const { postList } = this.state;
     postList.push(post);
-    this.setState({postList});
+    this.setState({ postList });
   }
 
   render() {

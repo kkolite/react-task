@@ -1,4 +1,4 @@
-import DateValidate from "./DateValidate";
+import DateValidate from './DateValidate';
 
 interface IValidate {
   regex?: RegExp;
@@ -8,7 +8,7 @@ interface IValidate {
 export default function (arr: IValidate[]) {
   const boolArr = arr.map(({ regex, el }) => {
     el.style.outline = '';
-    
+
     if (!regex) {
       const result = el.checked;
       el.style.outline = result ? '' : '1px solid red';
