@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Cards from './pages/Cards';
 import Error from './pages/Error';
@@ -9,6 +9,12 @@ import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Airlines from './API/Airlines';
 import CardsList from './components/CardsList';
+import Form from './pages/Form';
+import UserList from './components/UserList';
+import UserForm from './components/UserForm';
+import { IPost } from './data/types';
+import DateValidate from './validate/DateValidate';
+import { Simulate } from 'react-dom/test-utils';
 
 const mockValue = {
   iata: '',
@@ -20,6 +26,14 @@ const mockValue = {
   },
 };
 
+const mockPost = {
+  name: 'Name',
+  date: '2022-11-07',
+  region: 'us',
+  radio: 'true',
+  file: ''
+}
+
 const mockSetSearch = (str: string) => {
   console.log(str);
 };
@@ -27,6 +41,8 @@ const mockSetSearch = (str: string) => {
 const mockCurrentPage = () => {
   console.log('');
 };
+
+const mockSetPost = (obj: IPost) => {}
 
 describe('Fetch airlines', () => {
   it('Get correct data by ICAO code', async () => {
@@ -141,3 +157,50 @@ describe('My Input', () => {
     expect(screen.getByPlaceholderText(/search/i)).toHaveAttribute('type');
   });
 });
+
+describe('Form page', () => {
+  it('Render form', () => {
+    render(<Form currentPage={mockCurrentPage}/>);
+    expect(screen.getByRole('checkbox')).toBeInTheDocument();
+  })
+  it('Set new post', () => {
+    const formPage = new Form({currentPage: mockCurrentPage});
+    formPage.setPost(mockPost);
+    expect(formPage.state.postList.length).toEqual(1);
+  })
+  it('Render list of posts', () => {
+    render(<UserList postList={[mockPost]}/>);
+    expect(screen.getByText('Date: 2022-11-07')).toBeInTheDocument();
+  })
+  it('Handle submit error', () => {
+    render(<UserForm setPost={mockSetPost}/>);
+    const button = screen.getByRole('button');
+    const check = screen.getByRole('checkbox');
+    button.click();
+    expect(check).toHaveStyle('outline: 1px solid red');
+  })
+  it('Handle submit', () => {
+    render(<UserForm setPost={mockSetPost}/>);
+    const nameInput: HTMLInputElement = screen.getByLabelText(/name/i);
+    const dateInput: HTMLInputElement = screen.getByLabelText(/date/i);
+    const fileInput: HTMLInputElement = screen.getByLabelText(/photo/i);
+    const checkInput: HTMLInputElement = screen.getByRole('checkbox');
+    const button = screen.getByRole('button');
+
+    const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
+
+    nameInput.value = 'Name';
+    dateInput.value = '2022-02-02';
+    checkInput.checked = true;
+    const event = {target: {files: file}}
+    fireEvent.change(fileInput, event);
+
+    button.click();
+    expect(checkInput).toBeChecked();
+  })
+  it('Validate date', () => {
+    const date = document.createElement('input');
+    date.value = '2022-02-02';
+    expect(DateValidate(date)).toBeTruthy();
+  })
+})
