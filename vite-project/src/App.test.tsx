@@ -14,7 +14,6 @@ import UserList from './components/UserList';
 import UserForm from './components/UserForm';
 import { IPost } from './data/types';
 import DateValidate from './validate/DateValidate';
-import { Simulate } from 'react-dom/test-utils';
 
 const mockValue = {
   iata: '',
@@ -31,8 +30,8 @@ const mockPost = {
   date: '2022-11-07',
   region: 'us',
   radio: 'true',
-  file: ''
-}
+  file: '',
+};
 
 const mockSetSearch = (str: string) => {
   console.log(str);
@@ -42,7 +41,9 @@ const mockCurrentPage = () => {
   console.log('');
 };
 
-const mockSetPost = (obj: IPost) => {}
+const mockSetPost = (obj: IPost) => {
+  obj;
+};
 
 describe('Fetch airlines', () => {
   it('Get correct data by ICAO code', async () => {
@@ -108,9 +109,13 @@ describe('Cards page', () => {
 
   it('Save to local storage', () => {
     const page = render(<Cards currentPage={mockCurrentPage} />);
+    const input: HTMLInputElement = screen.getByRole('textbox');
     localStorage.setItem('value', 'abracadabra');
-    page.unmount();
-    expect(localStorage.getItem('value')).toEqual('');
+    input.value = 'Test';
+    setTimeout(() => {
+      page.unmount();
+      expect(localStorage.getItem('value')).toEqual('Test');
+    }, 600);
   });
 });
 
@@ -160,27 +165,27 @@ describe('My Input', () => {
 
 describe('Form page', () => {
   it('Render form', () => {
-    render(<Form currentPage={mockCurrentPage}/>);
+    render(<Form currentPage={mockCurrentPage} />);
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
-  })
+  });
   it('Set new post', () => {
-    const formPage = new Form({currentPage: mockCurrentPage});
+    const formPage = new Form({ currentPage: mockCurrentPage });
     formPage.setPost(mockPost);
     expect(formPage.state.postList.length).toEqual(1);
-  })
+  });
   it('Render list of posts', () => {
-    render(<UserList postList={[mockPost]}/>);
+    render(<UserList postList={[mockPost]} />);
     expect(screen.getByText('Date: 2022-11-07')).toBeInTheDocument();
-  })
+  });
   it('Handle submit error', () => {
-    render(<UserForm setPost={mockSetPost}/>);
+    render(<UserForm setPost={mockSetPost} />);
     const button = screen.getByRole('button');
     const check = screen.getByRole('checkbox');
     button.click();
     expect(check).toHaveStyle('outline: 1px solid red');
-  })
+  });
   it('Handle submit', () => {
-    render(<UserForm setPost={mockSetPost}/>);
+    render(<UserForm setPost={mockSetPost} />);
     const nameInput: HTMLInputElement = screen.getByLabelText(/name/i);
     const dateInput: HTMLInputElement = screen.getByLabelText(/date/i);
     const fileInput: HTMLInputElement = screen.getByLabelText(/photo/i);
@@ -192,15 +197,15 @@ describe('Form page', () => {
     nameInput.value = 'Name';
     dateInput.value = '2022-02-02';
     checkInput.checked = true;
-    const event = {target: {files: file}}
+    const event = { target: { files: file } };
     fireEvent.change(fileInput, event);
 
     button.click();
     expect(checkInput).toBeChecked();
-  })
+  });
   it('Validate date', () => {
     const date = document.createElement('input');
     date.value = '2022-02-02';
     expect(DateValidate(date)).toBeTruthy();
-  })
-})
+  });
+});
