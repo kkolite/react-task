@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { IInput, IInputObj, IPost } from '../data/types';
-import Validate from '../hoocks/Validate';
+import Validate from '../validate/Validate';
 
 interface IProps {
   setPost: (obj: IPost) => void;
@@ -29,7 +29,7 @@ class UserForm extends Component<IProps> {
     const submitButton = this.submitButton.current;
     if (!submitStatus || !submitButton) return;
 
-    const elObj = {
+    const data = {
       name: {
         el: this.inputName.current,
         regex: /^[a-z0-9_-]{3,15}$/,
@@ -41,26 +41,29 @@ class UserForm extends Component<IProps> {
       img: {
         el: this.inputFile.current,
         regex: /[\S\s]+[\S]+/,
+      },
+      check: {
+        el: this.inputCheck.current
       }
     } as IInputObj;
 
-    const addObj = {
-      checkbox: this.inputCheck.current?.checked.toString(),
+    const addData = {
       region: this.inputSelect.current?.value,
       radio: this.inputRadio.current?.checked.toString()
     } as IPost;
     
-    const elArr = Object.values(elObj);
-    if (!Validate(elArr)) {
-      this.afterInvalid(submitButton, elArr);
+    const arrData = Object.values(data);
+  
+    if (!Validate(arrData)) {
+      this.afterInvalid(arrData);
       return;
     }
     
     const inputfile = this.inputFile.current;
     if (!inputfile?.files) return;
 
-    this.createPost(elObj, addObj, inputfile.files);
-    this.afterValid(submitButton, submitStatus, elArr);
+    this.createPost(data, addData, inputfile.files);
+    this.afterValid(submitStatus, arrData);
   }
 
   handleImg() {
@@ -85,20 +88,25 @@ class UserForm extends Component<IProps> {
     reader.readAsDataURL(file);
   }
 
-  afterValid(button: HTMLButtonElement, status: HTMLLabelElement, arr: IInput[]) {
+  afterValid(status: HTMLLabelElement, arr: IInput[]) {
+    const prevImg = this.imgFile.current;
+    const check = this.inputCheck.current;
+    if (!prevImg || !check) return;
+    check.checked = false;
+    prevImg.src = '';
+
     arr.forEach((input) => {
       input.el.value = '';
-      input.el.onchange = this.removeDisable.bind(this);
+      input.el.onchange = null;
     });
-    button.disabled = true;
+    
     status.textContent = 'Success!';
     setTimeout(() => (status.textContent = ''), 3000);
   }
 
-  afterInvalid(button: HTMLButtonElement, arr: IInput[]) {
-    button.disabled = true;
+  afterInvalid(arr: IInput[]) {
     arr.forEach((input) => {
-      input.el.onchange = () => Validate(arr, button);
+      input.el.onchange = () => Validate(arr);
     })
   }
 
@@ -118,11 +126,6 @@ class UserForm extends Component<IProps> {
     reader.readAsDataURL(file);
   }
 
-  removeDisable() {
-    if (!this.submitButton.current) return;    
-    this.submitButton.current.disabled = false;
-  }
-
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="form">
@@ -134,7 +137,6 @@ class UserForm extends Component<IProps> {
             className='form__control'
             id="name"
             ref={this.inputName}
-            onChange={this.removeDisable.bind(this)}
           />
         </label>
         <label>
@@ -145,19 +147,6 @@ class UserForm extends Component<IProps> {
             className='form__control'
             id="date"
             ref={this.inputDate}
-            onChange={this.removeDisable.bind(this)}
-          />
-        </label>
-        <label>
-          Have you got pets?
-          <input
-            type="checkbox"
-            name=""
-            className='form__control'
-            id="check"
-            ref={this.inputCheck}
-            value="qqq"
-            onChange={this.removeDisable.bind(this)}
           />
         </label>
         <label>
@@ -190,10 +179,21 @@ class UserForm extends Component<IProps> {
           />
         </label>
         <img src="" alt="" ref={this.imgFile} className="user-post__img"/>
+        <label>
+          I consent to my personal data
+          <input
+            type="checkbox"
+            name=""
+            className='form__control'
+            id="check"
+            ref={this.inputCheck}
+            value="qqq"
+          />
+        </label>
         <button 
           ref={this.submitButton}
-          disabled={true}
-        >Submit</button>
+          className="form__submit"
+        >Submit</button >
         <label ref={this.submitStatus} />
       </form>
     );

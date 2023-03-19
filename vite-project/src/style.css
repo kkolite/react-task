@@ -119,6 +119,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 10px;
+  margin: 10px 0;
+  border-bottom: 1px solid navy;
 }
 
 .form__control {
@@ -131,6 +134,24 @@
   gap: 20px
 }
 
+.form__submit {
+  width: 50%;
+  padding: 5px 15px;
+  color: navy;
+  border: 1px solid navy;
+  font-size: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all .2;
+}
+
+.form__submit_dis {
+  opacity: .4;
+  cursor: none;
+}
+
 .user-post__img {
-  max-width: 230px;
+  width: 230px;
+  background-color: aliceblue;
 }

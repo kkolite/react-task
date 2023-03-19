@@ -7,7 +7,7 @@ export interface IInputProps {
 
 export interface IInput {
   el: HTMLInputElement,
-  regex: RegExp,
+  regex?: RegExp,
 }
 
 export interface IInputObj {

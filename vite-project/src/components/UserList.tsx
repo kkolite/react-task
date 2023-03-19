@@ -7,7 +7,7 @@ interface IProps {
 
 const UserList = ({postList} : IProps) => {
   const list = postList.length ? 
-  <div>
+  <div className="card__list">
     {postList.map((el) => (
       <UserCard post={el} key={el.name} />
     ))}
