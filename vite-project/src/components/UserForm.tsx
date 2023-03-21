@@ -16,6 +16,7 @@ class UserForm extends Component<IProps> {
   inputRadio: React.RefObject<HTMLInputElement> = React.createRef();
   inputFile: React.RefObject<HTMLInputElement> = React.createRef();
   imgFile: React.RefObject<HTMLImageElement> = React.createRef();
+  form: React.RefObject<HTMLFormElement> = React.createRef();
   setPost: (obj: IPost) => void;
 
   constructor(props: IProps) {
@@ -92,13 +93,8 @@ class UserForm extends Component<IProps> {
     const prevImg = this.imgFile.current;
     const check = this.inputCheck.current;
     if (!prevImg || !check) return;
-    check.checked = false;
     prevImg.src = '';
-
-    arr.forEach((input) => {
-      input.el.value = '';
-      input.el.onchange = null;
-    });
+    this.form.current?.reset();
 
     status.textContent = 'Success!';
     setTimeout(() => (status.textContent = ''), 3000);
@@ -128,7 +124,7 @@ class UserForm extends Component<IProps> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)} className="form">
+      <form onSubmit={this.handleSubmit.bind(this)} className="form" ref={this.form}>
         <label>
           Name, 3-15 symbols:
           <input type="text" name="" className="form__control" id="name" ref={this.inputName} />
