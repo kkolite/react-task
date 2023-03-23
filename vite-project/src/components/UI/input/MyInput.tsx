@@ -3,6 +3,7 @@ import classes from './MyInput.module.css';
 interface IProps {
   setSearch: (str: string) => void;
   value?: string;
+  [key: string]: unknown;
 }
 
 const MyInput = ({ setSearch, value }: IProps) => {

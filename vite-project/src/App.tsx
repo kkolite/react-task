@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { EPages } from './data/pages';

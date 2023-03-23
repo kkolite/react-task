@@ -9,9 +9,9 @@ const About = () => {
       </div>
       <h2>Our mission</h2>
       <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, repudiandae amet aut
-        aliquam repellat molestiae id explicabo quidem voluptatum sequi tenetur consequatur
-        sapiente ipsa ipsam architecto, et blanditiis laudantium assumenda.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, repudiandae amet aut aliquam
+        repellat molestiae id explicabo quidem voluptatum sequi tenetur consequatur sapiente ipsa
+        ipsam architecto, et blanditiis laudantium assumenda.
       </div>
     </div>
   );

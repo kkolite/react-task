@@ -1,58 +1,40 @@
 import MyInput from '../components/UI/input/MyInput';
 import CardsList from '../components/CardsList';
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import Airlines from '../API/Airlines';
-import { IAirline, INullProps } from '../data/types';
+import { IAirline } from '../data/types';
+import useDebounce from '../hooks/useDebounce';
 
-class Cards extends Component<INullProps, { list: IAirline[] | null; str: string }> {
-  static isActive: NodeJS.Timeout | null;
+const Cards = () => {
+  const [list, setList] = useState<IAirline[]>([]);
+  const [search, setSearch] = useState<string>('');
+  //const [isLoading, setLoading] = useState<boolean>(false);
 
-  constructor(props: INullProps) {
-    super(props);
-    this.state = {
-      list: null,
-      str: localStorage.getItem('value') || '',
-    };
+  useEffect(() => {
+    const value = localStorage.getItem('value') || 'airlines';
+    setSearch(value);
+    setFetchList(value);
+  }, []);
 
-    addEventListener('beforeunload', () => {
-      this.saveToLocalStorage();
-    });
-  }
-
-  change(str: string) {
-    if (Cards.isActive) {
-      clearTimeout(Cards.isActive);
-      Cards.isActive = null;
-    }
-    Cards.isActive = setTimeout(async () => {
-      this.setState({ list: null, str });
-      const list = await Airlines.name(str || 'airlines');
-      this.setState({ list });
-    }, 500);
-  }
-
-  saveToLocalStorage() {
-    const str = this.state.str;
+  const handleSearch = async (str: string) => {
+    setSearch(str);
     localStorage.setItem('value', str);
-  }
+    await setFetchList(str);
+  };
 
-  componentDidMount() {
-    const str = localStorage.getItem('value') || 'airlines';
-    if (str) this.change(str);
-  }
+  const handleWithinDebounce = useDebounce(handleSearch);
 
-  componentWillUnmount() {
-    this.saveToLocalStorage();
-  }
+  const setFetchList = async (str: string) => {
+    const list = await Airlines.name(str || 'airlines');
+    setList(list);
+  };
 
-  render() {
-    return (
-      <div className="cards__page">
-        <MyInput setSearch={this.change.bind(this)} value={localStorage.getItem('value') || ''} />
-        <CardsList list={this.state ? this.state.list : null} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="cards__page">
+      <MyInput setSearch={handleWithinDebounce} value={search} />
+      <CardsList list={list} />
+    </div>
+  );
+};
 
 export default Cards;
