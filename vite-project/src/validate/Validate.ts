@@ -1,27 +1,28 @@
 import DateValidate from './DateValidate';
 
 interface IValidate {
-  regex?: RegExp;
-  el: HTMLInputElement;
+  regex?: RegExp,
+  el: HTMLInputElement,
+  errorLabel: HTMLLabelElement
 }
 
 export default function (arr: IValidate[]) {
-  const boolArr = arr.map(({ regex, el }) => {
-    el.style.outline = '';
+  const boolArr = arr.map(({ regex, el, errorLabel }) => {
+    errorLabel.textContent = '';
 
     if (!regex) {
       const result = el.checked;
-      el.style.outline = result ? '' : '1px solid red';
+      errorLabel.textContent = result ? '' : 'Error!';
       return el.checked;
     }
 
     if (el.value.match(regex)) {
       if (el.type === 'date') {
-        DateValidate(el);
+        return DateValidate(el, errorLabel);
       }
       return true;
     }
-    el.style.outline = '1px solid red';
+    errorLabel.textContent = 'Error!';
     return false;
   });
   const result = boolArr.every((el) => el);

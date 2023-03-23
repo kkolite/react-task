@@ -7,6 +7,7 @@ export interface IInputProps {
 
 export interface IInput {
   el: HTMLInputElement;
+  errorLabel: HTMLLabelElement;
   regex?: RegExp;
 }
 

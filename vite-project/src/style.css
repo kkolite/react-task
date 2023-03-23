@@ -124,6 +124,10 @@
   border-bottom: 1px solid navy;
 }
 
+.form__label {
+  position: relative;
+}
+
 .form__control {
   margin-left: 10px;
 }
@@ -154,4 +158,10 @@
 .user-post__img {
   width: 230px;
   background-color: aliceblue;
+}
+
+.error__label {
+  position: absolute;
+  right: -50px;
+  color: red;
 }
