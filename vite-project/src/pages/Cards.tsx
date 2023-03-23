@@ -2,18 +2,13 @@ import MyInput from '../components/UI/input/MyInput';
 import CardsList from '../components/CardsList';
 import { Component } from 'react';
 import Airlines from '../API/Airlines';
-import { IAirline } from '../data/types';
+import { IAirline, INullProps } from '../data/types';
 
-interface IProps {
-  currentPage: () => void;
-}
-
-class Cards extends Component<IProps, { list: IAirline[] | null; str: string }> {
+class Cards extends Component<INullProps, { list: IAirline[] | null; str: string }> {
   static isActive: NodeJS.Timeout | null;
 
-  constructor(props: IProps) {
+  constructor(props: INullProps) {
     super(props);
-    props.currentPage();
     this.state = {
       list: null,
       str: localStorage.getItem('value') || '',

@@ -8,18 +8,10 @@ import Error from './pages/Error';
 import Form from './pages/Form';
 
 const App = () => {
-  const [page, setPage] = useState<string>('');
-
-  const currentPage = () => {
-    const path = location.pathname.split('/');
-    const page = path[1];
-    if (page) setPage(page);
-  };
-
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Navbar page={page} />,
+      element: <Navbar />,
       children: [
         {
           index: true,
@@ -27,15 +19,15 @@ const App = () => {
         },
         {
           path: EPages.ABOUT,
-          element: <About currentPage={currentPage} />,
+          element: <About />,
         },
         {
           path: EPages.CARDS,
-          element: <Cards currentPage={currentPage} />,
+          element: <Cards />,
         },
         {
           path: EPages.FORM,
-          element: <Form currentPage={currentPage} />,
+          element: <Form />,
         },
       ],
     },

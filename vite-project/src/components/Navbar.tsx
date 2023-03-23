@@ -1,15 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import MyLink from './MyLink';
 
-interface IProps {
-  page: string;
-}
-
-const Navbar = ({ page }: IProps) => {
+const Navbar = () => {
+  const location = useLocation();
   return (
     <>
       <div className="navbar">
-        <p>Current page: {page}</p>
+        <p>Current page: {location.pathname.slice(1)}</p>
         <MyLink to="/about">About</MyLink>
         <MyLink to="/cards">Cards</MyLink>
         <MyLink to="/form">Form</MyLink>
