@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IInput, IInputObj, IPost } from '../data/types';
+import { IInputObj, IPost } from '../data/types';
 import Validate from '../validate/Validate';
 
 interface IProps {
@@ -171,7 +171,7 @@ class UserForm extends Component<IProps> {
         <button ref={this.submitButton} className="form__submit">
           Submit
         </button>
-        <label ref={this.submitStatus} />
+        <label ref={this.submitStatus} className="form__success"/>
       </form>
     );
   }

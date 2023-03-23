@@ -124,6 +124,12 @@
   border-bottom: 1px solid navy;
 }
 
+.form__page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form__label {
   position: relative;
 }
@@ -153,6 +159,12 @@
 .form__submit_dis {
   opacity: .4;
   cursor: none;
+}
+
+.form__success {
+  font-size: 18px;
+  color: green;
+  font-weight: bold;
 }
 
 .user-post__img {

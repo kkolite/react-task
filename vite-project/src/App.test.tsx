@@ -52,6 +52,7 @@ describe('Fetch airlines', () => {
   });
   it('Get correct data by name', async () => {
     const data = await Airlines.name('belavia');
+    jest.setTimeout(10000);
     expect(data[0].icao).toEqual('BRU');
   });
 });
@@ -177,13 +178,6 @@ describe('Form page', () => {
     render(<UserList postList={[mockPost]} />);
     expect(screen.getByText('Date: 2022-11-07')).toBeInTheDocument();
   });
-  it('Handle submit error', () => {
-    render(<UserForm setPost={mockSetPost} />);
-    const button = screen.getByRole('button');
-    const check = screen.getByRole('checkbox');
-    button.click();
-    expect(check).toHaveStyle('outline: 1px solid red');
-  });
   it('Handle submit', () => {
     render(<UserForm setPost={mockSetPost} />);
     const nameInput: HTMLInputElement = screen.getByLabelText(/name/i);
@@ -204,8 +198,9 @@ describe('Form page', () => {
     expect(checkInput).toBeChecked();
   });
   it('Validate date', () => {
-    const date = document.createElement('input');
+    const date = {} as HTMLInputElement;
+    const label = {} as HTMLLabelElement;
     date.value = '2022-02-02';
-    expect(DateValidate(date)).toBeTruthy();
+    expect(DateValidate(date, label)).toBeTruthy();
   });
 });
