@@ -4,22 +4,22 @@ import { useEffect, useState } from 'react';
 import Airlines from '../API/Airlines';
 import { IAirline } from '../data/types';
 import useDebounce from '../hooks/useDebounce';
+import { useFetching } from '../hooks/useFetching';
 
 const Cards = () => {
   const [list, setList] = useState<IAirline[]>([]);
   const [search, setSearch] = useState<string>('');
-  //const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const value = localStorage.getItem('value') || 'airlines';
     setSearch(value);
-    setFetchList(value);
+    fetching(value);
   }, []);
 
   const handleSearch = async (str: string) => {
     setSearch(str);
     localStorage.setItem('value', str);
-    await setFetchList(str);
+    await fetching(str);
   };
 
   const handleWithinDebounce = useDebounce(handleSearch);
@@ -29,10 +29,12 @@ const Cards = () => {
     setList(list);
   };
 
+  const {fetching, isLoading} = useFetching(setFetchList);
+
   return (
     <div className="cards__page">
       <MyInput setSearch={handleWithinDebounce} value={search} />
-      <CardsList list={list} />
+      <CardsList list={list} isLoading={isLoading}/>
     </div>
   );
 };

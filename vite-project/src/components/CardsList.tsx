@@ -4,11 +4,12 @@ import NotFound from './NotFound';
 import MyLoader from './UI/loader/MyLoader';
 
 interface IProps {
-  list: IAirline[] | null;
+  list: IAirline[];
+  isLoading: boolean;
 }
 
-const CardsList = ({ list }: IProps) => {
-  if (list === null) return <MyLoader />;
+const CardsList = ({ list, isLoading }: IProps) => {
+  if (isLoading) return <MyLoader />;
   if (!list.length) return <NotFound />;
 
   return (
