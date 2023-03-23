@@ -22,7 +22,7 @@ class Form extends Component<IProps, { postList: IPost[] }> {
 
   render() {
     return (
-      <div className='form__page'>
+      <div className="form__page">
         <UserForm setPost={this.setPost.bind(this)} />
         <UserList postList={this.state.postList} />
       </div>

@@ -171,7 +171,7 @@ class UserForm extends Component<IProps> {
         <button ref={this.submitButton} className="form__submit">
           Submit
         </button>
-        <label ref={this.submitStatus} className="form__success"/>
+        <label ref={this.submitStatus} className="form__success" />
       </form>
     );
   }
