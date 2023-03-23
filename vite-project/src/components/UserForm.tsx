@@ -71,10 +71,10 @@ class UserForm extends Component<IProps> {
     if (!inputfile?.files) return;
 
     this.createPost(data, addData, inputfile.files);
-    this.afterValid(submitStatus, arrData);
+    this.afterValid(submitStatus);
   }
 
-  afterValid(status: HTMLLabelElement, arr: IInput[]) {
+  afterValid(status: HTMLLabelElement) {
     const check = this.inputCheck.current;
     if (!check) return;
     this.form.current?.reset();
@@ -108,17 +108,17 @@ class UserForm extends Component<IProps> {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="form" ref={this.form}>
-        <label className='form__label'>
+        <label className="form__label">
           Name, 3-15 symbols:
           <input type="text" name="" className="form__control" id="name" ref={this.inputName} />
           <label ref={this.nameError} className="error__label"></label>
         </label>
-        <label className='form__label'>
+        <label className="form__label">
           Date of Birth
           <input type="date" name="" className="form__control" id="date" ref={this.inputDate} />
           <label ref={this.dateError} className="error__label"></label>
         </label>
-        <label className='form__label'>
+        <label className="form__label">
           Choose your region
           <select name="" id="" ref={this.inputSelect} className="form__control">
             <option value="by">BY</option>
@@ -151,17 +151,12 @@ class UserForm extends Component<IProps> {
             />
           </label>
         </fieldset>
-        <label className='form__label'>
+        <label className="form__label">
           Photo
-          <input
-            type="file"
-            accept="image/*"
-            ref={this.inputFile}
-            className="form__control"
-          />
+          <input type="file" accept="image/*" ref={this.inputFile} className="form__control" />
           <label ref={this.fileError} className="error__label"></label>
         </label>
-        <label className='form__label'>
+        <label className="form__label">
           I consent to my personal data
           <input
             type="checkbox"

@@ -1,9 +1,9 @@
 import DateValidate from './DateValidate';
 
 interface IValidate {
-  regex?: RegExp,
-  el: HTMLInputElement,
-  errorLabel: HTMLLabelElement
+  regex?: RegExp;
+  el: HTMLInputElement;
+  errorLabel: HTMLLabelElement;
 }
 
 export default function (arr: IValidate[]) {
