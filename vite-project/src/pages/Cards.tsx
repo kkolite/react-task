@@ -29,12 +29,12 @@ const Cards = () => {
     setList(list);
   };
 
-  const {fetching, isLoading} = useFetching(setFetchList);
+  const { fetching, isLoading } = useFetching(setFetchList);
 
   return (
     <div className="cards__page">
       <MyInput setSearch={handleWithinDebounce} value={search} />
-      <CardsList list={list} isLoading={isLoading}/>
+      <CardsList list={list} isLoading={isLoading} />
     </div>
   );
 };

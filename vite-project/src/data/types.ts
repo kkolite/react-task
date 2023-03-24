@@ -1,3 +1,5 @@
+import { FieldErrors, UseFormRegister } from 'react-hook-form/dist/types';
+
 export interface IInputProps {
   type: string;
   placeholder?: string;
@@ -6,9 +8,17 @@ export interface IInputProps {
 }
 
 export interface IInput {
-  el: HTMLInputElement;
-  errorLabel: HTMLLabelElement;
-  regex?: RegExp;
+  register: UseFormRegister<IData>;
+  errors?: FieldErrors<IData>;
+}
+
+export interface IData {
+  name: string;
+  date: string;
+  radio: string;
+  region: string;
+  check: boolean;
+  file: FileList;
 }
 
 export interface IInputObj {

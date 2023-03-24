@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import UserForm from '../components/UserForm';
+import UserForm from '../components/form/UserForm';
 import UserList from '../components/UserList';
 import { INullProps, IPost } from '../data/types';
 

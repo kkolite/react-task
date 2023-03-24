@@ -11,7 +11,7 @@ import Airlines from './API/Airlines';
 import CardsList from './components/CardsList';
 import Form from './pages/Form';
 import UserList from './components/UserList';
-import UserForm from './components/UserForm';
+import UserForm from './components/form/UserForm';
 import { IPost } from './data/types';
 import DateValidate from './validate/DateValidate';
 
