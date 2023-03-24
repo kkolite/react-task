@@ -1,10 +1,6 @@
 import { IInput } from '../../data/types';
 
-interface IProps extends IInput {
-  handleImg: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const File = ({ register, errors, handleImg }: IProps) => {
+const File = ({ register, errors }: IInput) => {
   return (
     <label className="form__label">
       Photo
@@ -15,7 +11,6 @@ const File = ({ register, errors, handleImg }: IProps) => {
         {...register('file', {
           required: 'No file!',
         })}
-        onChange={handleImg}
       />
       <label className="error__label">{errors?.file && errors?.file?.message}</label>
     </label>

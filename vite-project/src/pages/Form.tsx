@@ -1,26 +1,21 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import UserForm from '../components/form/UserForm';
 import UserList from '../components/UserList';
-import { INullProps, IPost } from '../data/types';
+import { IPost } from '../data/types';
 
-class Form extends Component<INullProps, { postList: IPost[] }> {
-  state: { postList: IPost[] } = { postList: [] };
+const Form = () => {
+  const [postList, setPostsList] = useState<IPost[]>([]);
 
-  setPost(post: IPost) {
-    console.log(Object.entries(post));
-    const { postList } = this.state;
-    postList.push(post);
-    this.setState({ postList });
-  }
+  const setPost = (post: IPost) => {
+    setPostsList([...postList, post]);
+  };
 
-  render() {
-    return (
-      <div className="form__page">
-        <UserForm setPost={this.setPost.bind(this)} />
-        <UserList postList={this.state.postList} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="form__page">
+      <UserForm setPost={setPost} />
+      <UserList postList={postList} />
+    </div>
+  );
+};
 
 export default Form;
