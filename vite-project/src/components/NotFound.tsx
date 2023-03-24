@@ -1,5 +1,7 @@
+import { TEXT } from "../data/text";
+
 const NotFound = () => {
-  return <div>Oops! We did not find the information you requested</div>;
+  return <div>{TEXT.ERRORS.NOT_FOUND}</div>;
 };
 
 export default NotFound;

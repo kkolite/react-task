@@ -1,16 +1,17 @@
+import { TEXT } from '../../data/text';
 import { IInput } from '../../data/types';
 
 const Name = ({ register, errors }: IInput) => {
   return (
     <label className="form__label">
-      Name, 3-15 symbols:
+      {TEXT.FORM.NAME}
       <input
         className="form__control"
         {...register('name', {
-          required: 'Error!',
+          required: TEXT.ERRORS.DEFAULT,
           pattern: {
             value: /^[a-z0-9_-]{3,15}$/,
-            message: 'Error!',
+            message: TEXT.ERRORS.DEFAULT,
           },
         })}
       />

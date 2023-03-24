@@ -1,15 +1,16 @@
+import { TEXT } from '../../data/text';
 import { IInput } from '../../data/types';
 
 const File = ({ register, errors }: IInput) => {
   return (
     <label className="form__label">
-      Photo
+      {TEXT.FORM.FILE}
       <input
         type="file"
         accept="image/*"
         className="form__control"
         {...register('file', {
-          required: 'No file!',
+          required: TEXT.ERRORS.NO_FILE,
         })}
       />
       <label className="error__label">{errors?.file && errors?.file?.message}</label>

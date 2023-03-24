@@ -1,3 +1,4 @@
+import { TEXT } from '../data/text';
 import { IPost } from '../data/types';
 import UserCard from './UserCard';
 
@@ -13,7 +14,7 @@ const UserList = ({ postList }: IProps) => {
       ))}
     </div>
   ) : (
-    <div>Empty list</div>
+    <div>{TEXT.ERRORS.EMPTY}</div>
   );
 
   return list;

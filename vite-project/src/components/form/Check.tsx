@@ -1,16 +1,16 @@
-import React from 'react';
+import { TEXT } from '../../data/text';
 import { IInput } from '../../data/types';
 
 const Check = ({ register, errors }: IInput) => {
   return (
     <label className="form__label">
-      I consent to my personal data
+      {TEXT.FORM.CHECK}
       <input
         type="checkbox"
         className="form__control"
         id="check"
         {...register('check', {
-          required: 'Error',
+          required: TEXT.ERRORS.DEFAULT,
         })}
       />
       <label className="error__label">{errors?.check && errors?.check?.message}</label>

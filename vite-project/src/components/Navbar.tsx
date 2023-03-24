@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
+import { TEXT } from '../data/text';
 import MyLink from './MyLink';
 
 const Navbar = () => {
@@ -6,10 +7,10 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <p>Current page: {location.pathname.slice(1)}</p>
-        <MyLink to="/about">About</MyLink>
-        <MyLink to="/cards">Cards</MyLink>
-        <MyLink to="/form">Form</MyLink>
+        <p>{TEXT.PAGES.CURRENT} {location.pathname.slice(1)}</p>
+        <MyLink to="/about">{TEXT.PAGES.ABOUT}</MyLink>
+        <MyLink to="/cards">{TEXT.PAGES.CARDS}</MyLink>
+        <MyLink to="/form">{TEXT.PAGES.FORM}</MyLink>
       </div>
       <main className="container">
         <Outlet />

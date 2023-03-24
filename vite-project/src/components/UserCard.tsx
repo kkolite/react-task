@@ -1,3 +1,4 @@
+import { TEXT } from '../data/text';
 import { IPost } from '../data/types';
 
 interface IProps {
@@ -7,10 +8,10 @@ interface IProps {
 const UserCard = ({ post }: IProps) => {
   return (
     <div className="card">
-      <p>Name: {post.name}</p>
-      <p>Date: {post.date}</p>
-      <p>Region: {post.region.toUpperCase()}</p>
-      <p>Relocate: {post.radio}</p>
+      <p>{TEXT.CARD.NAME} {post.name}</p>
+      <p>{TEXT.CARD.DATE} {post.date}</p>
+      <p>{TEXT.CARD.REGION} {post.region.toUpperCase()}</p>
+      <p>{TEXT.CARD.RELOCATE} {post.radio}</p>
       <img src={post.file} alt="post img" className="user-post__img" />
     </div>
   );

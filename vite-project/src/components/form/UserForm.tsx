@@ -8,6 +8,7 @@ import Region from './Region';
 import Radio from './Radio';
 import File from './File';
 import Check from './Check';
+import { TEXT } from '../../data/text';
 
 interface IProps {
   setPost: (obj: IPost) => void;
@@ -45,7 +46,7 @@ const UserForm = ({ setPost }: IProps) => {
       <Radio register={register} />
       <File register={register} errors={errors} />
       <Check register={register} errors={errors} />
-      <button className="form__submit">Submit</button>
+      <button className="form__submit">{TEXT.FORM.BUTTON}</button>
       <label className="form__success">{status}</label>
     </form>
   );
