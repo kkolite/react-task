@@ -1,10 +1,11 @@
 import MyInput from '../components/UI/input/MyInput';
 import CardsList from '../components/CardsList';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Airlines from '../API/Airlines';
 import { IAirline } from '../data/types';
 import useDebounce from '../hooks/useDebounce';
 import { useFetching } from '../hooks/useFetching';
+import useSaveLS from '../hooks/useSaveLS';
 
 const Cards = () => {
   const [list, setList] = useState<IAirline[]>([]);
@@ -16,9 +17,10 @@ const Cards = () => {
     fetching(value);
   }, []);
 
+  useSaveLS('value', search);
+
   const handleSearch = async (str: string) => {
     setSearch(str);
-    localStorage.setItem('value', str);
     await fetching(str);
   };
 
