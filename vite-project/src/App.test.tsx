@@ -36,10 +36,6 @@ const mockSetSearch = (str: string) => {
   console.log(str);
 };
 
-const mockCurrentPage = () => {
-  console.log('');
-};
-
 const mockSetPost = (obj: IPost) => {
   obj;
 };
@@ -121,7 +117,7 @@ describe('Cards page', () => {
 
 describe('Card list', () => {
   it('Empty list', () => {
-    render(<CardsList list={[]} isLoading={false}/>);
+    render(<CardsList list={[]} isLoading={false} />);
     expect(screen.getByText(/oops/i)).toBeInTheDocument();
   });
   it('Render list', () => {

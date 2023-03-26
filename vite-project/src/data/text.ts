@@ -4,7 +4,7 @@ export const TEXT = {
     CHECK: 'I consent to my personal data',
     FILE: 'Photo',
     NAME: 'Name, 3-15 symbols:',
-    DATE: 'Date'
+    DATE: 'Date',
   },
   ERRORS: {
     DEFAULT: 'Error!',
@@ -17,12 +17,12 @@ export const TEXT = {
     NAME: 'Name',
     DATE: 'Date',
     REGION: 'Region',
-    RELOCATE: 'Relocate'
+    RELOCATE: 'Relocate',
   },
   PAGES: {
     ABOUT: 'About',
     CARDS: 'Cards',
     FORM: 'Form',
-    CURRENT: 'Current page:'
-  }
-}
+    CURRENT: 'Current page:',
+  },
+};
