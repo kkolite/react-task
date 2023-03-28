@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IInputObj, IPost } from '../data/types';
+import { IInputObj, IPost, IRadio } from '../data/types';
 import Validate from '../validate/Validate';
 
 interface IProps {
@@ -12,12 +12,15 @@ class UserForm extends Component<IProps> {
   inputDate: React.RefObject<HTMLInputElement> = React.createRef();
   inputCheck: React.RefObject<HTMLInputElement> = React.createRef();
   inputSelect: React.RefObject<HTMLSelectElement> = React.createRef();
-  inputRadio: React.RefObject<HTMLInputElement> = React.createRef();
+  inputRadioOne: React.RefObject<HTMLInputElement> = React.createRef();
+  inputRadioTwo: React.RefObject<HTMLInputElement> = React.createRef();
   inputFile: React.RefObject<HTMLInputElement> = React.createRef();
   submitButton: React.RefObject<HTMLButtonElement> = React.createRef();
   submitStatus: React.RefObject<HTMLLabelElement> = React.createRef();
   nameError: React.RefObject<HTMLLabelElement> = React.createRef();
   dateError: React.RefObject<HTMLLabelElement> = React.createRef();
+  selectError: React.RefObject<HTMLLabelElement> = React.createRef();
+  radioError: React.RefObject<HTMLLabelElement> = React.createRef();
   fileError: React.RefObject<HTMLLabelElement> = React.createRef();
   checkError: React.RefObject<HTMLLabelElement> = React.createRef();
   setPost: (obj: IPost) => void;
@@ -37,12 +40,16 @@ class UserForm extends Component<IProps> {
       name: {
         el: this.inputName.current,
         errorLabel: this.nameError.current,
-        regex: /^[a-z0-9_-]{3,15}$/,
+        regex: /^[a-zA-Z0-9_-]{3,15}$/,
       },
       date: {
         el: this.inputDate.current,
         errorLabel: this.dateError.current,
         regex: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/,
+      },
+      value: {
+        el: this.inputSelect.current,
+        errorLabel: this.selectError.current,
       },
       img: {
         el: this.inputFile.current,
@@ -57,15 +64,16 @@ class UserForm extends Component<IProps> {
 
     const addData = {
       region: this.inputSelect.current?.value,
-      radio: this.inputRadio.current?.checked.toString(),
+      radio: this.inputRadioOne.current?.checked.toString(),
     } as IPost;
 
     const arrData = Object.values(data);
+    const radioObj = {
+      arr: [this.inputRadioOne.current?.checked, this.inputRadioTwo.current?.checked],
+      errorLabel: this.radioError.current,
+    } as IRadio;
 
-    if (!Validate(arrData)) {
-      //this.afterInvalid(arrData);
-      return;
-    }
+    if (!Validate(arrData, radioObj)) return;
 
     const inputfile = this.inputFile.current;
     if (!inputfile?.files) return;
@@ -82,12 +90,6 @@ class UserForm extends Component<IProps> {
     status.textContent = 'Success!';
     setTimeout(() => (status.textContent = ''), 3000);
   }
-
-  /*afterInvalid(arr: IInput[]) {
-    arr.forEach((input) => {
-      input.el.onchange = () => Validate(arr);
-    });
-  }*/
 
   createPost(obj: IInputObj, addObj: IPost, files: FileList) {
     const post: IPost = { ...addObj };
@@ -121,10 +123,12 @@ class UserForm extends Component<IProps> {
         <label className="form__label">
           Choose your region
           <select name="" id="" ref={this.inputSelect} className="form__control">
+            <option value=""></option>
             <option value="by">BY</option>
             <option value="ru">RU</option>
             <option value="ua">UA</option>
           </select>
+          <label ref={this.selectError} className="error__label"></label>
         </label>
         <fieldset id="group" className="form__radio-container">
           Relocation?
@@ -136,7 +140,7 @@ class UserForm extends Component<IProps> {
               name="group"
               id=""
               value={'1'}
-              ref={this.inputRadio}
+              ref={this.inputRadioOne}
             />
           </label>
           <label>
@@ -147,9 +151,10 @@ class UserForm extends Component<IProps> {
               name="group"
               id=""
               value={'2'}
-              defaultChecked
+              ref={this.inputRadioTwo}
             />
           </label>
+          <label ref={this.radioError} className="error__label"></label>
         </fieldset>
         <label className="form__label">
           Photo

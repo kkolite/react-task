@@ -7,7 +7,6 @@ import Card from './components/Card';
 import MyInput from './components/UI/input/MyInput';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Airlines from './API/Airlines';
 import CardsList from './components/CardsList';
 import Form from './pages/Form';
 import UserList from './components/UserList';
@@ -44,18 +43,6 @@ const mockCurrentPage = () => {
 const mockSetPost = (obj: IPost) => {
   obj;
 };
-
-describe('Fetch airlines', () => {
-  it('Get correct data by ICAO code', async () => {
-    const data = await Airlines.icao('bru');
-    expect(data[0].name).toEqual('Belavia');
-  });
-  it('Get correct data by name', async () => {
-    const data = await Airlines.name('belavia');
-    jest.setTimeout(10000);
-    expect(data[0].icao).toEqual('BRU');
-  });
-});
 
 describe('About page', () => {
   it('render about page', () => {

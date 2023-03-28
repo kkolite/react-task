@@ -6,9 +6,14 @@ export interface IInputProps {
 }
 
 export interface IInput {
-  el: HTMLInputElement;
+  el: HTMLInputElement | HTMLSelectElement;
   errorLabel: HTMLLabelElement;
   regex?: RegExp;
+}
+
+export interface IRadio {
+  arr: boolean[];
+  errorLabel: HTMLLabelElement;
 }
 
 export interface IInputObj {
