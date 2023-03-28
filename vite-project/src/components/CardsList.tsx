@@ -1,4 +1,4 @@
-import { IAirline, IPhoto } from '../data/types';
+import { IPhoto } from '../data/types';
 import Card from './Card';
 import NotFound from './NotFound';
 import MyLoader from './UI/loader/MyLoader';

@@ -1,8 +1,7 @@
 import MyInput from '../components/UI/input/MyInput';
 import CardsList from '../components/CardsList';
 import { useEffect, useState } from 'react';
-import Airlines from '../API/Airlines';
-import { IAirline, IPhoto } from '../data/types';
+import { IPhoto } from '../data/types';
 import useDebounce from '../hooks/useDebounce';
 import { useFetching } from '../hooks/useFetching';
 import useSaveLS from '../hooks/useSaveLS';
@@ -23,6 +22,9 @@ const Cards = () => {
     const value = localStorage.getItem('value') || 'airlines';
     setSearch(value);
     fetching(value);
+    // Для имитации componentDidMount (запуска один раз) нужно передать пустой массив
+    // Eslint кидает warning на зависимость от fetching
+    // Это больная точка линтера с хуками. Поэтому так :(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

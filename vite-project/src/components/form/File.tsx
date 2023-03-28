@@ -13,7 +13,7 @@ const File = ({ register, errors }: IInput) => {
           required: TEXT.ERRORS.NO_FILE,
         })}
       />
-      <label className="error__label">{errors?.file && errors?.file?.message}</label>
+      <label className="error__label">{errors?.file?.message}</label>
     </label>
   );
 };

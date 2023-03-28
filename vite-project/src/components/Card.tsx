@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { IAirline, IPhoto } from '../data/types';
+import { IPhoto } from '../data/types';
 import MyButton from './UI/button/MyButton';
 
 interface IProps {
@@ -11,7 +10,7 @@ const Card = ({ photo }: IProps) => {
     <div className="card">
       <h3 className="card__name">{photo.user.name}</h3>
       <div className="card__img-box">
-        <img src={photo.urls.small} alt="photo" height="60"/>
+        <img src={photo.urls.small} alt="photo" height="60" />
       </div>
       <MyButton disabled={true} title="Link disabled :(">
         More info

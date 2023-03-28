@@ -21,9 +21,8 @@ const UserForm = ({ setPost }: IProps) => {
     formState: { errors },
     reset,
   } = useForm<IData>({
-    defaultValues: {
-      region: 'by',
-    }
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
   const [status, setStatus] = useState<string>('');
 
@@ -42,7 +41,7 @@ const UserForm = ({ setPost }: IProps) => {
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <Name register={register} errors={errors} />
       <Date register={register} errors={errors} />
-      <Region register={register} />
+      <Region register={register} errors={errors} />
       <Radio register={register} />
       <File register={register} errors={errors} />
       <Check register={register} errors={errors} />

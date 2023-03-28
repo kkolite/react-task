@@ -16,7 +16,7 @@ const Date = ({ register, errors }: IInput) => {
           },
         })}
       />
-      <label className="error__label">{errors?.date && errors?.date?.message}</label>
+      <label className="error__label">{errors?.date?.message}</label>
     </label>
   );
 };

@@ -13,7 +13,7 @@ const Check = ({ register, errors }: IInput) => {
           required: TEXT.ERRORS.DEFAULT,
         })}
       />
-      {errors?.check && <label className="error__label">{errors?.check?.message}</label>}
+      <label className="error__label">{errors?.check?.message}</label>
     </label>
   );
 };

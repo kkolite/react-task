@@ -15,7 +15,7 @@ const Name = ({ register, errors }: IInput) => {
           },
         })}
       />
-      <label className="error__label">{errors?.name && errors?.name?.message}</label>
+      <label className="error__label">{errors?.name?.message}</label>
     </label>
   );
 };

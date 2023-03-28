@@ -56,13 +56,13 @@ interface IUrls {
 }
 
 interface IUser {
-  name: string,
+  name: string;
   [key: string]: unknown;
 }
 
 export interface IPhoto {
-  id: string,
-  urls: IUrls,
-  user: IUser,
+  id: string;
+  urls: IUrls;
+  user: IUser;
   [key: string]: unknown;
 }
