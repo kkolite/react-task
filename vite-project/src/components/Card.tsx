@@ -1,29 +1,21 @@
 import { Link } from 'react-router-dom';
-import { IAirline } from '../data/types';
+import { IAirline, IPhoto } from '../data/types';
 import MyButton from './UI/button/MyButton';
 
 interface IProps {
-  airline: IAirline;
+  photo: IPhoto;
 }
 
-const Card = ({ airline }: IProps) => {
-  const fleet = airline.fleet;
+const Card = ({ photo }: IProps) => {
   return (
     <div className="card">
-      <h3 className="card__name">{airline.name}</h3>
+      <h3 className="card__name">{photo.user.name}</h3>
       <div className="card__img-box">
-        {airline.logo_url ? <img src={airline.logo_url} alt="logo" /> : <p>No logo</p>}
+        <img src={photo.urls.small} alt="photo" height="60"/>
       </div>
-      <div className="card__info">
-        <p>ICAO: {airline.icao}</p>
-        <p>IATA: {airline.iata}</p>
-        <p>Fleet size: {fleet.total}</p>
-      </div>
-      <Link to={`/cards/${airline.icao.toLowerCase()}`}>
-        <MyButton disabled={true} title="Link disabled :(">
-          About Fleet
-        </MyButton>
-      </Link>
+      <MyButton disabled={true} title="Link disabled :(">
+        More info
+      </MyButton>
     </div>
   );
 };

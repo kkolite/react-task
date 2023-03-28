@@ -1,10 +1,10 @@
-import { IAirline } from '../data/types';
+import { IAirline, IPhoto } from '../data/types';
 import Card from './Card';
 import NotFound from './NotFound';
 import MyLoader from './UI/loader/MyLoader';
 
 interface IProps {
-  list: IAirline[];
+  list: IPhoto[];
   isLoading: boolean;
 }
 
@@ -15,7 +15,7 @@ const CardsList = ({ list, isLoading }: IProps) => {
   return (
     <div className="card__list">
       {list.map((el) => (
-        <Card airline={el} key={el.icao} />
+        <Card photo={el} key={el.id} />
       ))}
     </div>
   );

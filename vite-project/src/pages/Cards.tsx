@@ -2,17 +2,18 @@ import MyInput from '../components/UI/input/MyInput';
 import CardsList from '../components/CardsList';
 import { useEffect, useState } from 'react';
 import Airlines from '../API/Airlines';
-import { IAirline } from '../data/types';
+import { IAirline, IPhoto } from '../data/types';
 import useDebounce from '../hooks/useDebounce';
 import { useFetching } from '../hooks/useFetching';
 import useSaveLS from '../hooks/useSaveLS';
+import Unsplash from '../API/Unsplash';
 
 const Cards = () => {
-  const [list, setList] = useState<IAirline[]>([]);
+  const [list, setList] = useState<IPhoto[]>([]);
   const [search, setSearch] = useState<string>('');
 
   const setFetchList = async (str: string) => {
-    const list = await Airlines.name(str || 'airlines');
+    const list = await Unsplash(str);
     setList(list);
   };
 

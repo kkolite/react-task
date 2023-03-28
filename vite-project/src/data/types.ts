@@ -50,3 +50,19 @@ export interface IAirline {
   name: string;
   fleet: IFleet;
 }
+
+interface IUrls {
+  [key: string]: string;
+}
+
+interface IUser {
+  name: string,
+  [key: string]: unknown;
+}
+
+export interface IPhoto {
+  id: string,
+  urls: IUrls,
+  user: IUser,
+  [key: string]: unknown;
+}
