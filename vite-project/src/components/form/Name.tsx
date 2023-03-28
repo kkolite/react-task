@@ -10,7 +10,7 @@ const Name = ({ register, errors }: IInput) => {
         {...register('name', {
           required: TEXT.ERRORS.DEFAULT,
           pattern: {
-            value: /^[a-z0-9_-]{3,15}$/,
+            value: /^[a-zA-Z0-9_-]{3,15}$/,
             message: TEXT.ERRORS.DEFAULT,
           },
         })}

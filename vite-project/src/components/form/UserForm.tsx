@@ -23,7 +23,7 @@ const UserForm = ({ setPost }: IProps) => {
   } = useForm<IData>({
     defaultValues: {
       region: 'by',
-    },
+    }
   });
   const [status, setStatus] = useState<string>('');
 

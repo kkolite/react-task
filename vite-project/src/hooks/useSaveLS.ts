@@ -5,12 +5,9 @@ export default (key: string, value: string) => {
 
   useEffect(() => {
     return () => {
-      console.log(inputValue.current);
-
       localStorage.setItem(key, inputValue.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [key]);
 
   useEffect(() => {
     inputValue.current = value;
