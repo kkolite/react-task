@@ -15,13 +15,9 @@ import UserForm from './components/form/UserForm';
 import { IPost } from './data/types';
 
 const mockValue = {
-  iata: '',
-  icao: '',
-  name: '',
-  logo_url: '',
-  fleet: {
-    '1': 2,
-  },
+  id: '123',
+  urls: {small: 'qwerty'},
+  user: {name: 'Alex'}
 };
 
 const mockPost = {
@@ -88,21 +84,6 @@ describe('Cards page', () => {
     expect(screen.findByText(/icao/i));
   });
 
-  /*it('Change and search', async () => {
-    const mockCards = new Cards({ currentPage: mockCurrentPage });
-    mockCards.change('Bel');
-    setTimeout(() => mockCards.change('Belavia'), 10);
-
-    setTimeout(() => {
-      const list = mockCards.state.list;
-      const str = mockCards.state.str;
-      expect(str).toEqual('Belavia');
-
-      if (!list) return;
-      expect(list[0].name).toEqual('Belavia');
-    }, 1500);
-  });*/
-
   it('Save to local storage', () => {
     const page = render(<Cards />);
     const input: HTMLInputElement = screen.getByRole('textbox');
@@ -128,7 +109,7 @@ describe('Card list', () => {
         </Routes>
       </BrowserRouter>
     );
-    expect(screen.getByText(/icao/i)).toBeInTheDocument();
+    expect(screen.getByText(/Alex/i)).toBeInTheDocument();
   });
 });
 
@@ -137,11 +118,11 @@ describe('Card', () => {
     render(
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Card airline={mockValue} />}></Route>
+          <Route path="/" element={<Card photo={mockValue} />}></Route>
         </Routes>
       </BrowserRouter>
     );
-    expect(screen.getByText(/icao/i)).toBeInTheDocument();
+    expect(screen.getByText(/Alex/i)).toBeInTheDocument();
   });
 });
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679686716027" clover="3.2.0">
-  <project timestamp="1679686716027" name="All files">
-    <metrics statements="107" coveredstatements="84" conditionals="22" coveredconditionals="14" methods="41" coveredmethods="32" elements="170" coveredelements="130" complexity="0" loc="107" ncloc="107" packages="11" files="30" classes="30"/>
+<coverage generated="1680015568836" clover="3.2.0">
+  <project timestamp="1680015568836" name="All files">
+    <metrics statements="117" coveredstatements="92" conditionals="10" coveredconditionals="8" methods="46" coveredmethods="37" elements="173" coveredelements="137" complexity="0" loc="117" ncloc="117" packages="11" files="32" classes="32"/>
     <package name="src">
       <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="D:\Проекты\react\react-task\vite-project\src\App.tsx">
@@ -16,23 +16,30 @@
       </file>
     </package>
     <package name="src.API">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="Airlines.ts" path="D:\Проекты\react\react-task\vite-project\src\API\Airlines.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="5" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="Unsplash.ts" path="D:\Проекты\react\react-task\vite-project\src\API\Unsplash.ts">
+        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="21" coveredstatements="21" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="9"/>
+      <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="9" coveredmethods="9"/>
       <file name="Card.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\Card.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
       </file>
       <file name="CardsList.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\CardsList.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
@@ -97,24 +104,24 @@
       </file>
     </package>
     <package name="src.components.form">
-      <metrics statements="23" coveredstatements="18" conditionals="8" coveredconditionals="4" methods="10" coveredmethods="7"/>
+      <metrics statements="23" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="7"/>
       <file name="Check.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\Check.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
       </file>
       <file name="Date.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\Date.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
       </file>
       <file name="File.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\File.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
       </file>
       <file name="Name.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\Name.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
       </file>
@@ -125,22 +132,22 @@
       </file>
       <file name="Region.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\Region.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
       </file>
       <file name="UserForm.tsx" path="D:\Проекты\react\react-task\vite-project\src\components\form\UserForm.tsx">
         <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="17" count="1" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.form.utils">
@@ -169,7 +176,7 @@
       </file>
     </package>
     <package name="src.hooks">
-      <metrics statements="14" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <metrics statements="20" coveredstatements="15" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="7"/>
       <file name="useDebounce.ts" path="D:\Проекты\react\react-task\vite-project\src\hooks\useDebounce.ts">
         <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="2" count="6" type="stmt"/>
@@ -190,33 +197,42 @@
         <line num="11" count="0" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
       </file>
+      <file name="useSaveLS.ts" path="D:\Проекты\react\react-task\vite-project\src\hooks\useSaveLS.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+      </file>
     </package>
     <package name="src.pages">
-      <metrics statements="26" coveredstatements="21" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="6"/>
+      <metrics statements="26" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="6"/>
       <file name="About.tsx" path="D:\Проекты\react\react-task\vite-project\src\pages\About.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
       </file>
       <file name="Cards.tsx" path="D:\Проекты\react\react-task\vite-project\src\pages\Cards.tsx">
-        <metrics statements="17" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="6" type="stmt"/>
+        <metrics statements="17" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="11" count="6" type="stmt"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
         <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="19" count="6" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="6" type="stmt"/>
-        <line num="27" count="6" type="stmt"/>
-        <line num="28" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="6" type="stmt"/>
-        <line num="34" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
       </file>
       <file name="Error.tsx" path="D:\Проекты\react\react-task\vite-project\src\pages\Error.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
