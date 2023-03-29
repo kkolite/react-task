@@ -3,18 +3,18 @@ import MyButton from '../UI/button/MyButton';
 
 interface IProps {
   photo: IPhoto;
+  setCard: (card: IPhoto) => void;
 }
 
-const Card = ({ photo }: IProps) => {
+const Card = ({ photo, setCard }: IProps) => {
+  const handleClick = () => setCard(photo);
   return (
     <div className="card">
       <h3 className="card__name">{photo.user.name}</h3>
       <div className="card__img-box">
         <img src={photo.urls.small} alt="photo" height="60" />
       </div>
-      <MyButton disabled={true} title="Link disabled :(">
-        More info
-      </MyButton>
+      <MyButton onClick={handleClick}>More info</MyButton>
     </div>
   );
 };

@@ -60,9 +60,17 @@ interface IUser {
   [key: string]: unknown;
 }
 
+interface ITag {
+  title: string;
+  type: string;
+}
+
 export interface IPhoto {
   id: string;
   urls: IUrls;
   user: IUser;
   [key: string]: unknown;
+  tags: ITag[];
+  likes: number;
+  description: string;
 }

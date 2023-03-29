@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { TEXT } from '../data/text';
-import MyLink from './MyLink';
+import MyLink from './UI/MyLink';
 
 const Navbar = () => {
   const location = useLocation();
