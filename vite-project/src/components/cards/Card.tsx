@@ -1,5 +1,5 @@
-import { IPhoto } from '../data/types';
-import MyButton from './UI/button/MyButton';
+import { IPhoto } from '../../data/types';
+import MyButton from '../UI/button/MyButton';
 
 interface IProps {
   photo: IPhoto;

@@ -1,5 +1,5 @@
 import MyInput from '../components/UI/input/MyInput';
-import CardsList from '../components/CardsList';
+import CardsList from '../components/cards/CardsList';
 import { useEffect, useState } from 'react';
 import { IPhoto } from '../data/types';
 import useDebounce from '../hooks/useDebounce';

@@ -1,7 +1,7 @@
-import { IPhoto } from '../data/types';
+import { IPhoto } from '../../data/types';
 import Card from './Card';
-import NotFound from './NotFound';
-import MyLoader from './UI/loader/MyLoader';
+import NotFound from '../UI/NotFound';
+import MyLoader from '../UI/loader/MyLoader';
 
 interface IProps {
   list: IPhoto[];

@@ -3,14 +3,14 @@ import '@testing-library/jest-dom';
 import Cards from './pages/Cards';
 import Error from './pages/Error';
 import About from './pages/About';
-import Card from './components/Card';
+import Card from './components/cards/Card';
 import MyInput from './components/UI/input/MyInput';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Airlines from './API/Airlines';
-import CardsList from './components/CardsList';
+import CardsList from './components/cards/CardsList';
 import Form from './pages/Form';
-import UserList from './components/UserList';
+import UserList from './components/users/UserList';
 import UserForm from './components/form/UserForm';
 import { IPost } from './data/types';
 
