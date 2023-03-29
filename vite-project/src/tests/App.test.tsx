@@ -1,52 +1,20 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Cards from './pages/Cards';
-import Error from './pages/Error';
-import About from './pages/About';
-import Card from './components/cards/Card';
-import MyInput from './components/UI/input/MyInput';
-import App from './App';
+import Cards from '../pages/Cards';
+import Error from '../pages/Error';
+import About from '../pages/About';
+import Card from '../components/cards/Card';
+import MyInput from '../components/UI/input/MyInput';
+import MyModal from '../components/UI/modal/MyModal';
+import App from '../App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Airlines from './API/Airlines';
-import CardsList from './components/cards/CardsList';
-import Form from './pages/Form';
-import UserList from './components/users/UserList';
-import UserForm from './components/form/UserForm';
-import { IPost } from './data/types';
-
-const mockValue = {
-  id: '123',
-  urls: { small: 'qwerty' },
-  user: { name: 'Alex' },
-};
-
-const mockPost = {
-  name: 'Name',
-  date: '2022-11-07',
-  region: 'us',
-  radio: 'true',
-  file: '',
-};
-
-const mockSetSearch = (str: string) => {
-  console.log(str);
-};
-
-const mockSetPost = (obj: IPost) => {
-  obj;
-};
-
-describe('Fetch airlines', () => {
-  it('Get correct data by ICAO code', async () => {
-    const data = await Airlines.icao('bru');
-    expect(data[0].name).toEqual('Belavia');
-  });
-  it('Get correct data by name', async () => {
-    const data = await Airlines.name('belavia');
-    jest.setTimeout(10000);
-    expect(data[0].icao).toEqual('BRU');
-  });
-});
+import CardsList from '../components/cards/CardsList';
+import Form from '../pages/Form';
+import UserList from '../components/users/UserList';
+import UserForm from '../components/form/UserForm';
+import ModalCard from '../components/cards/ModalCard';
+import React from 'react';
+import { mockPost, mockSetPost, mockSetSearch, mockValue, mockSetCard } from './mocks';
 
 describe('About page', () => {
   it('render about page', () => {
@@ -98,14 +66,17 @@ describe('Cards page', () => {
 
 describe('Card list', () => {
   it('Empty list', () => {
-    render(<CardsList list={[]} isLoading={false} />);
+    render(<CardsList list={[]} isLoading={false} setCard={mockSetCard} />);
     expect(screen.getByText(/oops/i)).toBeInTheDocument();
   });
   it('Render list', () => {
     render(
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<CardsList list={[mockValue]} isLoading={false} />}></Route>
+          <Route
+            path="/"
+            element={<CardsList list={[mockValue]} isLoading={false} setCard={mockSetCard} />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     );
@@ -118,11 +89,25 @@ describe('Card', () => {
     render(
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Card photo={mockValue} />}></Route>
+          <Route path="/" element={<Card setCard={mockSetCard} photo={mockValue} />}></Route>
         </Routes>
       </BrowserRouter>
     );
     expect(screen.getByText(/Alex/i)).toBeInTheDocument();
+  });
+});
+
+describe('Modal card', () => {
+  it('render modal', () => {
+    const setVisible: React.Dispatch<React.SetStateAction<boolean>> = (value) => {
+      value;
+    };
+    render(
+      <MyModal visible={true} setVisible={setVisible}>
+        <ModalCard card={mockValue} />
+      </MyModal>
+    );
+    expect(screen.getByText(/Desc/i)).toBeInTheDocument();
   });
 });
 
@@ -145,11 +130,6 @@ describe('Form page', () => {
     render(<Form />);
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
   });
-  /*it('Set new post', () => {
-    const formPage = new Form({ currentPage: mockCurrentPage });
-    formPage.setPost(mockPost);
-    expect(formPage.state.postList.length).toEqual(1);
-  });*/
   it('Render list of posts', () => {
     render(<UserList postList={[mockPost]} />);
     expect(screen.getByText(/2022-11-07/i)).toBeInTheDocument();
