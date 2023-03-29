@@ -16,8 +16,8 @@ import { IPost } from './data/types';
 
 const mockValue = {
   id: '123',
-  urls: {small: 'qwerty'},
-  user: {name: 'Alex'}
+  urls: { small: 'qwerty' },
+  user: { name: 'Alex' },
 };
 
 const mockPost = {
