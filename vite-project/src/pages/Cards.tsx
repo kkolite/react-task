@@ -8,35 +8,28 @@ import useSaveLS from '../hooks/useSaveLS';
 import Unsplash from '../API/Unsplash';
 import MyModal from '../components/UI/modal/MyModal';
 import ModalCard from '../components/cards/ModalCard';
+import { useSelector, useDispatch } from 'react-redux'
+import { setSearch, fetchCards } from '../store/cardSlice';
 
 const Cards = () => {
-  const [list, setList] = useState<IPhoto[]>([]);
-  const [search, setSearch] = useState<string>('');
+  const search = useSelector(state => state.cards.search);
+  const list = useSelector(state => state.cards.cards);
+  const isLoading = useSelector(state => state.cards.isLoading);
   const [visible, setViseble] = useState<boolean>(false);
   const [modal, setModal] = useState<IPhoto | null>(null);
-
-  const setFetchList = async (str: string) => {
-    const list = await Unsplash(str);
-    setList(list);
-  };
-
-  const { fetching, isLoading } = useFetching(setFetchList);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const value = localStorage.getItem('value') || 'airlines';
-    setSearch(value);
-    fetching(value);
+    dispatch(fetchCards(search));
     // Для имитации componentDidMount (запуска один раз) нужно передать пустой массив
     // Eslint кидает warning на зависимость от fetching
     // Это больная точка линтера с хуками. Поэтому так :(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useSaveLS('value', search);
-
   const handleSearch = async (str: string) => {
-    setSearch(str);
-    await fetching(str);
+    dispatch(setSearch(str));
+    dispatch(fetchCards(str));
   };
 
   const handleWithinDebounce = useDebounce(handleSearch);
