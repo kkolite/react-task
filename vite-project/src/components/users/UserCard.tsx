@@ -1,5 +1,5 @@
-import { TEXT } from '../data/text';
-import { IPost } from '../data/types';
+import { TEXT } from '../../data/text';
+import { IPost } from '../../data/types';
 
 interface IProps {
   post: IPost;

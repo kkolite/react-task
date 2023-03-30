@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UserForm from '../components/form/UserForm';
-import UserList from '../components/UserList';
+import UserList from '../components/users/UserList';
 import { IPost } from '../data/types';
 
 const Form = () => {

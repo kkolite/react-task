@@ -1,10 +1,9 @@
 import React from 'react';
-import classes from './MyButton.module.css';
+import classes from './MyButton.module.scss';
 
 interface IProps {
   children: string;
-  disabled?: boolean;
-  title?: string;
+  [key: string]: unknown;
 }
 
 const MyButton = ({ children, ...props }: IProps) => {

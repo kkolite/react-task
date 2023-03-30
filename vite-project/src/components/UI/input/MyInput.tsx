@@ -1,4 +1,4 @@
-import classes from './MyInput.module.css';
+import classes from './MyInput.module.scss';
 
 interface IProps {
   setSearch: (str: string) => void;

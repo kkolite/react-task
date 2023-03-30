@@ -1,0 +1,176 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  border-bottom: 2px solid navy;
+}
+
+.active {
+  color: red;
+}
+
+.mylink {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+
+  & div {
+    width: 80%;
+    max-width: 1000px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid navy;
+  padding: 10px;
+  /*border-radius: 10px;*/
+  width: 250px;
+
+  &__name {
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__img-box {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info {
+    padding-top: 10px;
+    border-top: 1px dotted navy;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    gap: 20px;
+  }
+}
+
+.cards__page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error{
+  &__page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(white, lightcyan);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__text {
+    font-size: 28px;
+  }
+
+  &_h {
+    font-size: 35px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin: 10px 0;
+  border-bottom: 1px solid navy;
+
+  &__page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__label {
+    position: relative;
+  }
+
+  &__control {
+    margin-left: 10px;
+  }
+
+  &__radio-container {
+    border: none;
+    display: flex;
+    gap: 20px
+  }
+
+  &__submit {
+    width: 50%;
+    padding: 5px 15px;
+    color: navy;
+    border: 1px solid navy;
+    font-size: 14px;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all .2;
+  }
+
+  &__success {
+    font-size: 18px;
+    color: green;
+    font-weight: bold;
+  }
+}
+
+.user-post__img {
+  width: 230px;
+  background-color: aliceblue;
+}
+
+.error__label {
+  position: absolute;
+  right: -50px;
+  color: red;
+}
