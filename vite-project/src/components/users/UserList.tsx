@@ -1,15 +1,12 @@
 import { TEXT } from '../../data/text';
-import { IPost } from '../../data/types';
+import { useAppSelector } from '../../store/hook';
 import UserCard from './UserCard';
 
-interface IProps {
-  postList: IPost[];
-}
-
-const UserList = ({ postList }: IProps) => {
-  const list = postList.length ? (
+const UserList = () => {
+  const list = useAppSelector((state) => state.users.cards);
+  const result = list.length ? (
     <div className="card__list">
-      {postList.map((el) => (
+      {list.map((el) => (
         <UserCard post={el} key={el.name} />
       ))}
     </div>
@@ -17,7 +14,7 @@ const UserList = ({ postList }: IProps) => {
     <div>{TEXT.ERRORS.EMPTY}</div>
   );
 
-  return list;
+  return result;
 };
 
 export default UserList;

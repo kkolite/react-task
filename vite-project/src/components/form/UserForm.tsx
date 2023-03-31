@@ -9,12 +9,10 @@ import Radio from './Radio';
 import File from './File';
 import Check from './Check';
 import { TEXT } from '../../data/text';
+import { useAppDispatch } from '../../store/hook';
+import { addCard } from '../../store/userSlice';
 
-interface IProps {
-  setPost: (obj: IPost) => void;
-}
-
-const UserForm = ({ setPost }: IProps) => {
+const UserForm = () => {
   const {
     register,
     handleSubmit,
@@ -25,6 +23,11 @@ const UserForm = ({ setPost }: IProps) => {
     reValidateMode: 'onSubmit',
   });
   const [status, setStatus] = useState<string>('');
+  const dispatch = useAppDispatch();
+
+  const setPost = (post: IPost) => {
+    dispatch(addCard(post));
+  };
 
   const onSubmit = (data: IData) => {
     FileReader(data, setPost);
