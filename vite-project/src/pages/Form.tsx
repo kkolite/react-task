@@ -1,19 +1,21 @@
-import { useState } from 'react';
 import UserForm from '../components/form/UserForm';
 import UserList from '../components/users/UserList';
 import { IPost } from '../data/types';
+import { useAppDispatch, useAppSelector } from '../store/hook';
+import { addCard } from '../store/userSlice';
 
 const Form = () => {
-  const [postList, setPostsList] = useState<IPost[]>([]);
+  const list = useAppSelector((state) => state.users.cards);
+  const dispatch = useAppDispatch();
 
   const setPost = (post: IPost) => {
-    setPostsList([...postList, post]);
+    dispatch(addCard(post));
   };
 
   return (
     <div className="form__page">
       <UserForm setPost={setPost} />
-      <UserList postList={postList} />
+      <UserList postList={list} />
     </div>
   );
 };

@@ -3,21 +3,18 @@ import CardsList from '../components/cards/CardsList';
 import { useEffect, useState } from 'react';
 import { IPhoto } from '../data/types';
 import useDebounce from '../hooks/useDebounce';
-import { useFetching } from '../hooks/useFetching';
-import useSaveLS from '../hooks/useSaveLS';
-import Unsplash from '../API/Unsplash';
 import MyModal from '../components/UI/modal/MyModal';
 import ModalCard from '../components/cards/ModalCard';
-import { useSelector, useDispatch } from 'react-redux'
 import { setSearch, fetchCards } from '../store/cardSlice';
+import { useAppDispatch, useAppSelector } from '../store/hook';
 
 const Cards = () => {
-  const search = useSelector(state => state.cards.search);
-  const list = useSelector(state => state.cards.cards);
-  const isLoading = useSelector(state => state.cards.isLoading);
+  const search = useAppSelector((state) => state.cards.search);
+  const list = useAppSelector((state) => state.cards.cards);
+  const isLoading = useAppSelector((state) => state.cards.isLoading);
   const [visible, setViseble] = useState<boolean>(false);
   const [modal, setModal] = useState<IPhoto | null>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchCards(search));
