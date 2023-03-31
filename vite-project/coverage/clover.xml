@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680073386504" clover="3.2.0">
-  <project timestamp="1680073386504" name="All files">
-    <metrics statements="117" coveredstatements="92" conditionals="10" coveredconditionals="8" methods="46" coveredmethods="37" elements="173" coveredelements="137" complexity="0" loc="117" ncloc="117" packages="11" files="32" classes="32"/>
+<coverage generated="1680256757591" clover="3.2.0">
+  <project timestamp="1680256757591" name="All files">
+    <metrics statements="112" coveredstatements="87" conditionals="10" coveredconditionals="8" methods="43" coveredmethods="34" elements="165" coveredelements="129" complexity="0" loc="112" ncloc="112" packages="11" files="31" classes="31"/>
     <package name="src">
       <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="D:\Проекты\react\react-task\vite-project\src\App.tsx">
@@ -16,15 +16,7 @@
       </file>
     </package>
     <package name="src.API">
-      <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <file name="Airlines.ts" path="D:\Проекты\react\react-task\vite-project\src\API\Airlines.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-      </file>
+      <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Unsplash.ts" path="D:\Проекты\react\react-task\vite-project\src\API\Unsplash.ts">
         <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="10" count="3" type="stmt"/>
@@ -227,12 +219,12 @@
         <line num="22" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
-        <line num="31" count="6" type="stmt"/>
-        <line num="33" count="6" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="38" count="6" type="stmt"/>
-        <line num="40" count="6" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
       </file>
       <file name="Error.tsx" path="D:\Проекты\react\react-task\vite-project\src\pages\Error.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

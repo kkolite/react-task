@@ -23,8 +23,9 @@ const Cards = () => {
     setSearch(value);
     fetching(value);
     // Для имитации componentDidMount (запуска один раз) нужно передать пустой массив
-    // Eslint кидает warning на зависимость от fetching
+    // Eslint кидает warning (подчеркну, не ошибку, а warning) на зависимость от fetching
     // Это больная точка линтера с хуками. Поэтому так :(
+    // Ментор разрешил заткнуть линтер, а не писать костыль длинною с десяток строчек
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
