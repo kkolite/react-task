@@ -7,6 +7,8 @@ interface ICardsState {
   cards: IPhoto[];
   isLoading: boolean;
   error: string;
+  modal: IPhoto | null;
+  isVisible: boolean;
 }
 
 const initialState: ICardsState = {
@@ -14,6 +16,8 @@ const initialState: ICardsState = {
   cards: [],
   isLoading: false,
   error: '',
+  modal: null,
+  isVisible: false,
 };
 
 export const fetchCards = createAsyncThunk('cards/fetchCards', async (value: string) => {
@@ -27,6 +31,12 @@ const cardSlice = createSlice({
   reducers: {
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
+    },
+    setModal(state, action: PayloadAction<IPhoto>) {
+      state.modal = action.payload;
+    },
+    setVisible(state, action: PayloadAction<boolean>) {
+      state.isVisible = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -49,6 +59,6 @@ function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
 }
 
-export const { setSearch } = cardSlice.actions;
+export const { setSearch, setModal, setVisible } = cardSlice.actions;
 
 export default cardSlice.reducer;

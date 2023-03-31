@@ -1,13 +1,19 @@
 import { IPhoto } from '../../data/types';
+import { setModal, setVisible } from '../../store/cardSlice';
+import { useAppDispatch } from '../../store/hook';
 import MyButton from '../UI/button/MyButton';
 
 interface IProps {
   photo: IPhoto;
-  setCard: (card: IPhoto) => void;
 }
 
-const Card = ({ photo, setCard }: IProps) => {
-  const handleClick = () => setCard(photo);
+const Card = ({ photo }: IProps) => {
+  const dispatch = useAppDispatch();
+  const handleClick = () => {
+    dispatch(setModal(photo));
+    dispatch(setVisible(true));
+  };
+
   return (
     <div className="card">
       <h3 className="card__name">{photo.user.name}</h3>
