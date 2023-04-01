@@ -1,9 +1,9 @@
-import useDebounce from '../../../hooks/useDebounce';
+import { useDebounce } from '../../../hooks';
 import { fetchCards, setSearch } from '../../../store/cardSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hook';
 import classes from './MyInput.module.scss';
 
-const MyInput = () => {
+export const MyInput = () => {
   const search = useAppSelector((state) => state.cards.search);
   const dispatch = useAppDispatch();
 
@@ -24,5 +24,3 @@ const MyInput = () => {
     />
   );
 };
-
-export default MyInput;

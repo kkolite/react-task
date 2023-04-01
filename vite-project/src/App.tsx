@@ -1,10 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import { EPages } from './data/pages';
-import About from './pages/About';
-import Cards from './pages/Cards';
-import Error from './pages/Error';
-import Form from './pages/Form';
+import { About, Cards, Form, Error, Navbar } from './pages';
 
 const App = () => {
   const router = createBrowserRouter([

@@ -1,5 +1,5 @@
-import UserForm from '../components/form/UserForm';
-import UserList from '../components/users/UserList';
+import { UserForm } from '../components/form/UserForm';
+import { UserList } from '../components/users/UserList';
 
 const Form = () => {
   return (
@@ -9,5 +9,3 @@ const Form = () => {
     </div>
   );
 };
-
-export default Form;

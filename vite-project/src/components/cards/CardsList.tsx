@@ -1,9 +1,8 @@
-import Card from './Card';
-import NotFound from '../UI/NotFound';
-import MyLoader from '../UI/loader/MyLoader';
+import { Card } from './Card';
+import { NotFound, MyLoader } from '../UI';
 import { useAppSelector } from '../../store/hook';
 
-const CardsList = () => {
+export const CardsList = () => {
   const list = useAppSelector((state) => state.cards.cards);
   const isLoading = useAppSelector((state) => state.cards.isLoading);
 
@@ -18,5 +17,3 @@ const CardsList = () => {
     </div>
   );
 };
-
-export default CardsList;

@@ -5,12 +5,10 @@ interface IProps {
   children: string;
 }
 
-const MyLink = ({ to, children }: IProps) => {
+export const MyLink = ({ to, children }: IProps) => {
   return (
     <NavLink to={to} className="mylink">
       {children}
     </NavLink>
   );
 };
-
-export default MyLink;

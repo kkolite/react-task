@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { TEXT } from '../data/text';
-import MyLink from './UI/MyLink';
+import { MyLink } from '../components/UI';
 
-const Navbar = () => {
+export const Navbar = () => {
   const location = useLocation();
   return (
     <>
@@ -20,5 +20,3 @@ const Navbar = () => {
     </>
   );
 };
-
-export default Navbar;

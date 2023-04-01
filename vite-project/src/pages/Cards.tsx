@@ -1,12 +1,10 @@
-import MyInput from '../components/UI/input/MyInput';
-import CardsList from '../components/cards/CardsList';
+import { MyInput, MyModal } from '../components/UI';
+import { CardsList, ModalCard } from '../components/cards';
 import { useEffect } from 'react';
-import MyModal from '../components/UI/modal/MyModal';
-import ModalCard from '../components/cards/ModalCard';
 import { fetchCards } from '../store/cardSlice';
 import { useAppDispatch, useAppSelector } from '../store/hook';
 
-const Cards = () => {
+export const Cards = () => {
   const search = useAppSelector((state) => state.cards.search);
   const dispatch = useAppDispatch();
 
@@ -15,6 +13,7 @@ const Cards = () => {
     // Для имитации componentDidMount (запуска один раз) нужно передать пустой массив
     // Eslint кидает warning на зависимость от fetching
     // Это больная точка линтера с хуками. Поэтому так :(
+    // Ментор разрешил заткнуть линтер на строчке ниже (чтобы не писать костыль)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,5 +27,3 @@ const Cards = () => {
     </div>
   );
 };
-
-export default Cards;

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default (key: string, value: string) => {
+export const useSaveLS = (key: string, value: string) => {
   const inputValue = useRef(value);
 
   useEffect(() => {

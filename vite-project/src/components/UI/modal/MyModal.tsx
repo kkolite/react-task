@@ -7,7 +7,7 @@ interface IProps {
   children: JSX.Element;
 }
 
-const MyModal = ({ children }: IProps) => {
+export const MyModal = ({ children }: IProps) => {
   const isVisible = useAppSelector((state) => state.cards.isVisible);
   const dispatch = useAppDispatch();
   const cl = isVisible ? [classes.myModal, classes.active] : [classes.myModal];
@@ -27,5 +27,3 @@ const MyModal = ({ children }: IProps) => {
     </div>
   );
 };
-
-export default MyModal;

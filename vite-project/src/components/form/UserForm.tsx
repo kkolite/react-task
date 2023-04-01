@@ -12,7 +12,7 @@ import { TEXT } from '../../data/text';
 import { useAppDispatch } from '../../store/hook';
 import { addCard } from '../../store/userSlice';
 
-const UserForm = () => {
+export const UserForm = () => {
   const {
     register,
     handleSubmit,
@@ -53,5 +53,3 @@ const UserForm = () => {
     </form>
   );
 };
-
-export default UserForm;

@@ -1,13 +1,13 @@
 import { IPhoto } from '../../data/types';
 import { setModal, setVisible } from '../../store/cardSlice';
 import { useAppDispatch } from '../../store/hook';
-import MyButton from '../UI/button/MyButton';
+import { MyButton } from '../UI';
 
 interface IProps {
   photo: IPhoto;
 }
 
-const Card = ({ photo }: IProps) => {
+export const Card = ({ photo }: IProps) => {
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(setModal(photo));
@@ -24,5 +24,3 @@ const Card = ({ photo }: IProps) => {
     </div>
   );
 };
-
-export default Card;

@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "react-scripts test",
-    "coverage": "react-scripts test --coverage  --watchAll",
+    "coverage": "react-scripts test --coverage  --watchAll --detectOpenHandles",
     "eslint": "eslint src",
     "fix": "eslint src --fix"
   },

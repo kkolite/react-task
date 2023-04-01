@@ -1,8 +1,8 @@
 import { useAppSelector } from '../../store/hook';
-import NotFound from '../UI/NotFound';
+import { NotFound } from '../UI/NotFound';
 import classes from './ModalCard.module.scss';
 
-const ModalCard = () => {
+export const ModalCard = () => {
   const card = useAppSelector((state) => state.cards.modal);
   const result = card ? (
     <div className={classes.container}>
@@ -17,5 +17,3 @@ const ModalCard = () => {
   );
   return result;
 };
-
-export default ModalCard;

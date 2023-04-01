@@ -1,4 +1,4 @@
-export default (func: (str: string) => Promise<void>) => {
+export const useDebounce = (func: (str: string) => Promise<void>) => {
   let isDebounce: NodeJS.Timeout | null = null;
   return function (str: string) {
     if (isDebounce) {

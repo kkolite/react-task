@@ -1,20 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Cards from '../pages/Cards';
-import Error from '../pages/Error';
-import About from '../pages/About';
-import Card from '../components/cards/Card';
-import MyInput from '../components/UI/input/MyInput';
-import MyModal from '../components/UI/modal/MyModal';
-import App from '../App';
+import { Cards, Error, About, Form } from '../pages';
+import { Card, CardsList, ModalCard } from '../components/cards';
+import { MyInput, MyModal } from '../components/UI';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CardsList from '../components/cards/CardsList';
-import Form from '../pages/Form';
-import UserList from '../components/users/UserList';
-import UserForm from '../components/form/UserForm';
-import ModalCard from '../components/cards/ModalCard';
-import React from 'react';
+import { UserList } from '../components/users';
+import { UserForm } from '../components/form';
 import { mockPost, mockSetPost, mockSetSearch, mockValue, mockSetCard } from './mocks';
+import React from 'react';
+import App from '../App';
 
 describe('About page', () => {
   it('render about page', () => {

@@ -1,8 +1,8 @@
 import { TEXT } from '../../data/text';
 import { useAppSelector } from '../../store/hook';
-import UserCard from './UserCard';
+import { UserCard } from './UserCard';
 
-const UserList = () => {
+export const UserList = () => {
   const list = useAppSelector((state) => state.users.cards);
   const result = list.length ? (
     <div className="card__list">
@@ -16,5 +16,3 @@ const UserList = () => {
 
   return result;
 };
-
-export default UserList;
