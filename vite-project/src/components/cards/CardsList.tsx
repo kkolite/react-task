@@ -1,7 +1,6 @@
 import { IPhoto } from '../../data/types';
-import Card from './Card';
-import NotFound from '../UI/NotFound';
-import MyLoader from '../UI/loader/MyLoader';
+import { Card } from './Card';
+import { MyLoader, NotFound } from '../UI';
 
 interface IProps {
   list: IPhoto[];
@@ -9,7 +8,7 @@ interface IProps {
   setCard: (card: IPhoto) => void;
 }
 
-const CardsList = ({ list, isLoading, setCard }: IProps) => {
+export const CardsList = ({ list, isLoading, setCard }: IProps) => {
   if (isLoading) return <MyLoader />;
   if (!list.length) return <NotFound />;
 
@@ -21,5 +20,3 @@ const CardsList = ({ list, isLoading, setCard }: IProps) => {
     </div>
   );
 };
-
-export default CardsList;

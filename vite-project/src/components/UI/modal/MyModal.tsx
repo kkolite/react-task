@@ -7,7 +7,7 @@ interface IProps {
   children: JSX.Element;
 }
 
-const MyModal = ({ children, visible, setVisible }: IProps) => {
+export const MyModal = ({ children, visible, setVisible }: IProps) => {
   const cl = [classes.myModal];
   if (visible) {
     cl.push(classes.active);
@@ -24,5 +24,3 @@ const MyModal = ({ children, visible, setVisible }: IProps) => {
     </div>
   );
 };
-
-export default MyModal;

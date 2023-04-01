@@ -14,7 +14,7 @@ interface IProps {
   setPost: (obj: IPost) => void;
 }
 
-const UserForm = ({ setPost }: IProps) => {
+export const UserForm = ({ setPost }: IProps) => {
   const {
     register,
     handleSubmit,
@@ -50,5 +50,3 @@ const UserForm = ({ setPost }: IProps) => {
     </form>
   );
 };
-
-export default UserForm;

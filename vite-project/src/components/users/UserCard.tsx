@@ -5,7 +5,7 @@ interface IProps {
   post: IPost;
 }
 
-const UserCard = ({ post }: IProps) => {
+export const UserCard = ({ post }: IProps) => {
   return (
     <div className="card">
       <p>
@@ -24,5 +24,3 @@ const UserCard = ({ post }: IProps) => {
     </div>
   );
 };
-
-export default UserCard;

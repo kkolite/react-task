@@ -6,7 +6,7 @@ interface IProps {
   [key: string]: unknown;
 }
 
-const MyInput = ({ setSearch, value }: IProps) => {
+export const MyInput = ({ setSearch, value }: IProps) => {
   return (
     <input
       className={classes.myInput}
@@ -17,5 +17,3 @@ const MyInput = ({ setSearch, value }: IProps) => {
     />
   );
 };
-
-export default MyInput;

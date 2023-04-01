@@ -1,18 +1,14 @@
-import MyInput from '../components/UI/input/MyInput';
-import CardsList from '../components/cards/CardsList';
+import { MyInput, MyModal } from '../components/UI';
+import { CardsList, ModalCard } from '../components/cards';
 import { useEffect, useState } from 'react';
 import { IPhoto } from '../data/types';
-import useDebounce from '../hooks/useDebounce';
-import { useFetching } from '../hooks/useFetching';
-import useSaveLS from '../hooks/useSaveLS';
+import { useDebounce, useSaveLS, useFetching } from '../hooks';
 import Unsplash from '../API/Unsplash';
-import MyModal from '../components/UI/modal/MyModal';
-import ModalCard from '../components/cards/ModalCard';
 
-const Cards = () => {
+export const Cards = () => {
   const [list, setList] = useState<IPhoto[]>([]);
-  const [search, setSearch] = useState<string>('');
-  const [visible, setViseble] = useState<boolean>(false);
+  const [search, setSearch] = useState('');
+  const [visible, setViseble] = useState(false);
   const [modal, setModal] = useState<IPhoto | null>(null);
 
   const setFetchList = async (str: string) => {
@@ -57,5 +53,3 @@ const Cards = () => {
     </div>
   );
 };
-
-export default Cards;

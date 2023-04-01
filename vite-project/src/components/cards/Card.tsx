@@ -1,12 +1,12 @@
 import { IPhoto } from '../../data/types';
-import MyButton from '../UI/button/MyButton';
+import { MyButton } from '../UI';
 
 interface IProps {
   photo: IPhoto;
   setCard: (card: IPhoto) => void;
 }
 
-const Card = ({ photo, setCard }: IProps) => {
+export const Card = ({ photo, setCard }: IProps) => {
   const handleClick = () => setCard(photo);
   return (
     <div className="card">
@@ -18,5 +18,3 @@ const Card = ({ photo, setCard }: IProps) => {
     </div>
   );
 };
-
-export default Card;

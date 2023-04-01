@@ -6,12 +6,10 @@ interface IProps {
   [key: string]: unknown;
 }
 
-const MyButton = ({ children, ...props }: IProps) => {
+export const MyButton = ({ children, ...props }: IProps) => {
   return (
     <button {...props} className={classes.myBtn}>
       {children}
     </button>
   );
 };
-
-export default MyButton;

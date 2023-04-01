@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import MyButton from '../components/UI/button/MyButton';
+import { MyButton } from '../components/UI';
 import { TEXT } from '../data/text';
 
-const Error = () => {
+export const Error = () => {
   return (
     <div className="error__page">
       <div className="error__container">
@@ -15,5 +15,3 @@ const Error = () => {
     </div>
   );
 };
-
-export default Error;

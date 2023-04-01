@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import UserForm from '../components/form/UserForm';
-import UserList from '../components/users/UserList';
+import { UserForm } from '../components/form';
+import { UserList } from '../components/users';
 import { IPost } from '../data/types';
 
-const Form = () => {
+export const Form = () => {
   const [postList, setPostsList] = useState<IPost[]>([]);
 
   const setPost = (post: IPost) => {
@@ -17,5 +17,3 @@ const Form = () => {
     </div>
   );
 };
-
-export default Form;
