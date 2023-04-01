@@ -15,7 +15,7 @@ export const CardsList = ({ list, isLoading, setCard }: IProps) => {
   return (
     <div className="card__list">
       {list.map((el) => (
-        <Card photo={el} key={el.id} setCard={setCard} />
+        <Card photo={el} key={el.id} setCard={() => setCard(el)} />
       ))}
     </div>
   );
