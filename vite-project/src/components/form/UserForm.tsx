@@ -42,7 +42,7 @@ const UserForm = ({ setPost }: IProps) => {
       <Name register={register} errors={errors} />
       <Date register={register} errors={errors} />
       <Region register={register} errors={errors} />
-      <Radio register={register} />
+      <Radio register={register} errors={errors} />
       <File register={register} errors={errors} />
       <Check register={register} errors={errors} />
       <button className="form__submit">{TEXT.FORM.BUTTON}</button>

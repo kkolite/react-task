@@ -141,7 +141,8 @@
 .form__radio-container {
   border: none;
   display: flex;
-  gap: 20px
+  gap: 20px;
+  position: relative;
 }
 
 .form__submit {
