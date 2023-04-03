@@ -19,7 +19,7 @@ const Cards = () => {
   const { fetching, isLoading } = useFetching(setFetchList);
 
   useEffect(() => {
-    const value = localStorage.getItem('value') || 'airlines';
+    const value = localStorage.getItem('value') || '';
     setSearch(value);
     fetching(value);
     // Для имитации componentDidMount (запуска один раз) нужно передать пустой массив
