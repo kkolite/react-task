@@ -1,7 +1,7 @@
-import { IPhoto } from '../../data/types';
-import { setModal, setVisible } from '../../store/cardSlice';
-import { useAppDispatch } from '../../store/hook';
-import { MyButton } from '../UI';
+import { IPhoto } from '../../../data/types';
+import { setModal, setVisible } from '../../../store/cardSlice';
+import { useAppDispatch } from '../../../store/hook';
+import { MyButton } from '../../UI';
 
 interface IProps {
   photo: IPhoto;

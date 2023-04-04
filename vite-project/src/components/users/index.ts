@@ -1,2 +1,2 @@
-export { UserCard } from './UserCard';
-export { UserList } from './UserList';
+export { UserCard } from './userCard/UserCard';
+export { UserList } from './userList/UserList';

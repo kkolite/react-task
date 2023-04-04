@@ -1,6 +1,6 @@
-import { TEXT } from '../../data/text';
-import { useAppSelector } from '../../store/hook';
-import { UserCard } from './UserCard';
+import { TEXT } from '../../../data/text';
+import { useAppSelector } from '../../../store/hook';
+import { UserCard } from '../userCard/UserCard';
 
 export const UserList = () => {
   const list = useAppSelector((state) => state.users.cards);

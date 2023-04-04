@@ -1,4 +1,4 @@
-import { IPhoto, IPost } from '../data/types';
+import { IPhoto } from '../data/types';
 
 export const mockValue: IPhoto = {
   id: '123',
@@ -20,16 +20,4 @@ export const mockPost = {
   region: 'us',
   radio: 'true',
   file: '',
-};
-
-export const mockSetSearch = (str: string) => {
-  console.log(str);
-};
-
-export const mockSetPost = (obj: IPost) => {
-  obj;
-};
-
-export const mockSetCard = (card: IPhoto) => {
-  card;
 };

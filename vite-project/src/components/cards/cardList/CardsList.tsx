@@ -1,6 +1,6 @@
-import { Card } from './Card';
-import { NotFound, MyLoader } from '../UI';
-import { useAppSelector } from '../../store/hook';
+import { Card } from '../card/Card';
+import { NotFound, MyLoader } from '../../UI';
+import { useAppSelector } from '../../../store/hook';
 
 export const CardsList = () => {
   const list = useAppSelector((state) => state.cards.cards);

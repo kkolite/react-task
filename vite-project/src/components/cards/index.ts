@@ -1,3 +1,3 @@
-export { Card } from './Card';
-export { CardsList } from './CardsList';
-export { ModalCard } from './ModalCard';
+export { Card } from './card/Card';
+export { CardsList } from './cardList/CardsList';
+export { ModalCard } from './modalCard/ModalCard';

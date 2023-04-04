@@ -1,5 +1,5 @@
 import { UserForm } from '../components/form/UserForm';
-import { UserList } from '../components/users/UserList';
+import { UserList } from '../components/users/userList/UserList';
 
 export const Form = () => {
   return (

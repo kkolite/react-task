@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../store/hook';
-import { NotFound } from '../UI/NotFound';
+import { useAppSelector } from '../../../store/hook';
+import { NotFound } from '../../UI/NotFound';
 import classes from './ModalCard.module.scss';
 
 export const ModalCard = () => {
