@@ -1,12 +1,9 @@
-import { IPhoto } from '../../data/types';
-import { NotFound } from '../UI';
+import { useAppSelector } from '../../../store/hook';
+import { NotFound } from '../../UI/NotFound';
 import classes from './ModalCard.module.scss';
 
-interface IProps {
-  card: IPhoto | null;
-}
-
-export const ModalCard = ({ card }: IProps) => {
+export const ModalCard = () => {
+  const card = useAppSelector((state) => state.cards.modal);
   const result = card ? (
     <div className={classes.container}>
       <img src={card.urls.regular} alt="image" className={classes.img} />

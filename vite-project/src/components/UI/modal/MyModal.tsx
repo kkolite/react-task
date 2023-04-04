@@ -1,23 +1,26 @@
 import ClearSearch from '../../../assets/ClearSearch';
+import { setVisible } from '../../../store/cardSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/hook';
 import classes from './MyModal.module.scss';
 
 interface IProps {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   children: JSX.Element;
 }
 
-export const MyModal = ({ children, visible, setVisible }: IProps) => {
-  const cl = [classes.myModal];
-  if (visible) {
-    cl.push(classes.active);
-  }
+export const MyModal = ({ children }: IProps) => {
+  const isVisible = useAppSelector((state) => state.cards.isVisible);
+  const dispatch = useAppDispatch();
+  const cl = isVisible ? [classes.myModal, classes.active] : [classes.myModal];
+
+  const handleClose = () => {
+    dispatch(setVisible(false));
+  };
 
   return (
-    <div className={cl.join(' ')} onClick={() => setVisible(false)}>
+    <div className={cl.join(' ')} onClick={handleClose}>
       <div className={classes.content} onClick={(e) => e.stopPropagation()}>
         {children}
-        <span className={classes.close} onClick={() => setVisible(false)}>
+        <span className={classes.close} onClick={handleClose}>
           <ClearSearch />
         </span>
       </div>
