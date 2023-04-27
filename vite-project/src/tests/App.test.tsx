@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MyInput } from '../components/UI';
-import App from '../App';
 import configureStore from 'redux-mock-store';
 import { mockValue } from './mocks';
 import { Provider } from 'react-redux';
+import App from '../App';
+import { BrowserRouter } from 'react-router-dom';
 
 const mockStore = configureStore([]);
 const initialState = {
@@ -22,7 +23,9 @@ describe('Navbar', () => {
   it('Navbar', () => {
     render(
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     );
     expect(screen.getByText(/cards/i)).toBeInTheDocument();
